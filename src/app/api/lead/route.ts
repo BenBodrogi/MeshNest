@@ -1,6 +1,3 @@
-console.log("Supabase URL exists:", !!process.env.NEXT_PUBLIC_SUPABASE_URL);
-console.log("Service key exists:", !!process.env.SUPABASE_SERVICE_ROLE_KEY);
-
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
@@ -12,16 +9,13 @@ type LeadPayload = {
   area?: string;
   issues?: string;
   timeline?: string;
-
-  // honeypot
-  website?: string;
+  website?: string; // honeypot
 };
 
 function isEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
-// Simple in-memory rate limit (OK for MVP; resets on deploy / server restart)
 const RATE: Record<string, { count: number; ts: number }> = {};
 function rateLimit(ip: string, limit = 6, windowMs = 60_000) {
   const now = Date.now();
@@ -65,7 +59,6 @@ export async function POST(req: Request) {
 
     const body = (await req.json()) as LeadPayload;
 
-    // Honeypot (bots fill it, humans shouldn't)
     if (body.website && body.website.trim().length > 0) {
       return NextResponse.json({ ok: true }); // silently accept
     }
@@ -74,30 +67,24 @@ export async function POST(req: Request) {
     const email = (body.email || "").trim().toLowerCase();
 
     if (name.length < 2) {
-      return NextResponse.json(
-        { ok: false, error: "Name is too short." },
-        { status: 400 }
-      );
+      return NextResponse.json({ ok: false, error: "Name is too short." }, { status: 400 });
     }
     if (!isEmail(email)) {
-      return NextResponse.json(
-        { ok: false, error: "Invalid email address." },
-        { status: 400 }
-      );
+      return NextResponse.json({ ok: false, error: "Invalid email address." }, { status: 400 });
     }
 
-    // --- Supabase insert ---
+    // --- Supabase insert using ANON key (RLS insert-only policy protects the table) ---
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const anonKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY;
 
-    if (!supabaseUrl || !serviceKey) {
+    if (!supabaseUrl || !anonKey) {
       return NextResponse.json(
         { ok: false, error: "Server is not configured (missing Supabase env vars)." },
         { status: 500 }
       );
     }
 
-    const supabase = createClient(supabaseUrl, serviceKey, {
+    const supabase = createClient(supabaseUrl, anonKey, {
       auth: { persistSession: false },
     });
 
@@ -113,10 +100,7 @@ export async function POST(req: Request) {
 
     if (dbError) {
       console.error("Supabase insert error:", dbError);
-      return NextResponse.json(
-        { ok: false, error: "Failed to save your request." },
-        { status: 500 }
-      );
+      return NextResponse.json({ ok: false, error: "Failed to save your request." }, { status: 500 });
     }
 
     // --- Resend email notify (non-blocking failure) ---
@@ -148,10 +132,7 @@ export async function POST(req: Request) {
         replyTo: email,
       });
 
-      // If email fails, we still keep the lead in DB.
-      if (mailError) {
-        console.error("Resend error:", mailError);
-      }
+      if (mailError) console.error("Resend error:", mailError);
     }
 
     return NextResponse.json({ ok: true });
