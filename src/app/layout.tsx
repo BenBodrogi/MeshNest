@@ -12,8 +12,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl =
+  "https://mesh-nest-jt6ifrjej-benbodrogis-projects.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("hhttps://mesh-nest-jt6ifrjej-benbodrogis-projects.vercel.app/"), // change later to meshnest.co
+  metadataBase: new URL(baseUrl),
 
   title: {
     default: "MeshNest – Smarter Home Networking",
@@ -37,10 +40,18 @@ export const metadata: Metadata = {
     title: "MeshNest – Smarter Home Networking",
     description:
       "Fix slow Wi-Fi, dead zones, and unstable connections. Book a professional network audit today.",
-    url: "https://mesh-nest-jt6ifrjej-benbodrogis-projects.vercel.app/",
+    url: baseUrl,
     siteName: "MeshNest",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MeshNest – Smarter Home Networking",
+      },
+    ],
   },
 
   twitter: {
@@ -48,6 +59,7 @@ export const metadata: Metadata = {
     title: "MeshNest – Smarter Home Networking",
     description:
       "Professional network audits for homes and small businesses.",
+    images: ["/og-image.png"],
   },
 
   robots: {
