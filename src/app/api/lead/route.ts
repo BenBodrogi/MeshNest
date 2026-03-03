@@ -1,3 +1,6 @@
+console.log("Supabase URL exists:", !!process.env.NEXT_PUBLIC_SUPABASE_URL);
+console.log("Service key exists:", !!process.env.SUPABASE_SERVICE_ROLE_KEY);
+
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
