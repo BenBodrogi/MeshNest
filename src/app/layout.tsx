@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 const baseUrl =
-  "https://mesh-nest-jt6ifrjej-benbodrogis-projects.vercel.app";
+  "https://mesh-nest.vercel.app/";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
