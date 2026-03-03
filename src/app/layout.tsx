@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
 
   title: {
-    default: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
+    default: "MeshNest",
     template: "%s | MeshNest",
   },
 
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   authors: [{ name: "MeshNest" }],
 
   openGraph: {
-    title: "MeshNest",
+    title: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
     description:
       "Eliminate dead zones, stabilize speeds, and get a tailored upgrade plan for your home or small business. Book a MeshNest audit today.",
     url: baseUrl,
@@ -45,10 +45,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: `${baseUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
+        alt: "Fix Your Wi-Fi, For Good. Book a Network Audit | MeshNest",
       },
     ],
   },
