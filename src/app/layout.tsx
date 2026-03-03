@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   authors: [{ name: "MeshNest" }],
 
   openGraph: {
-    title: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
+    title: "MeshNest",
     description:
       "Eliminate dead zones, stabilize speeds, and get a tailored upgrade plan for your home or small business. Book a MeshNest audit today.",
     url: baseUrl,
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
     description:
       "Professional network audits to fix slow Wi-Fi, dead zones, and unstable connections. Book today.",
-    images: ["/og-image.png"],
+    images: ["public/og-image.png"],
   },
 
   robots: {
