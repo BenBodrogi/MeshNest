@@ -17,6 +17,14 @@
   /* Spacing scale */
   --pad-x: 16px;
   --section-y: 80px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  --accent: #7E3FF2;
+  --accent-hover: #6F33E6;
+  --accent-soft: rgba(126, 63, 242, 0.14);
 }
 
 @theme inline {
@@ -35,7 +43,14 @@
     --border: rgba(237, 237, 237, 0.12);
     --surface: rgba(255, 255, 255, 0.04);
     --surface-alt: rgba(255, 255, 255, 0.02);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 14px 40px rgba(0, 0, 0, 0.45);
   }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
@@ -48,6 +63,20 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Cohesive site-wide background glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+p {
+  line-height: 1.65;
 }
 
 /* Global link polish */
@@ -57,7 +86,7 @@ a {
 }
 
 a:hover {
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 /* Better focus visibility (keyboard users) */
@@ -67,7 +96,11 @@ a:hover {
   border-radius: 10px;
 }
 
-/* Optional helper classes you can start using gradually */
+::selection {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* Helpers */
 .container {
   max-width: var(--container);
   margin: 0 auto;
@@ -75,7 +108,7 @@ a:hover {
 }
 
 .section {
-  padding: var(--section-y) var(--pad-x);
+  padding: var(--section-y) 0;
 }
 
 .surface {
@@ -90,4 +123,55 @@ a:hover {
 
 .muted {
   color: var(--muted);
+}
+
+/* Reusable UI */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn {
+  height: 48px;              /* <— key */
+  line-height: 1;
+  padding: 0 18px;           /* padding becomes horizontal only */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 12px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  transition: transform 140ms ease, opacity 140ms ease, background 140ms ease,
+    border-color 140ms ease, box-shadow 140ms ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(0px);
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 10px 22px rgba(126, 63, 242, 0.22);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btnSecondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--foreground);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.btnSecondary:hover {
+  border-color: rgba(126, 63, 242, 0.7);
+  color: #fff;
 }

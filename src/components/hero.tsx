@@ -1,72 +1,65 @@
+import Image from "next/image";
+import styles from "./hero.module.css";
+
 export default function Hero() {
   return (
-    <section style={{ padding: "84px 16px" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <p style={{ fontSize: 14, letterSpacing: 0.6, textTransform: "uppercase", opacity: 0.75, marginBottom: 10 }}>
-          MeshNest • Home & Small Business Wi-Fi
-        </p>
+    <section className={styles.hero} aria-label="MeshNest hero">
+      {/* Background image layer */}
+      <div className={styles.bg} aria-hidden="true">
+        <Image
+          src="/hero-bg_v2.jpg"
+          alt=""
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+        <div className={styles.overlay} />
+      </div>
 
-        <h1 style={{ fontSize: 52, lineHeight: 1.05, marginBottom: 14, maxWidth: 900 }}>
-          Fix your Wi-Fi, for good.
-        </h1>
+      <div className="container">
+        <div className={styles.inner}>
+          <h1 className={styles.title}>
+            Designed.
+            <br />
+            Secured.
+            <br />
+            Managed.
+          </h1>
 
-        <p style={{ fontSize: 18, maxWidth: 720, marginBottom: 26, lineHeight: 1.6 }}>
-          Dead zones, random dropouts, slow speeds? Book a{" "}
-          <strong>Wi-Fi Health Check</strong> and get a clear diagnosis + a practical upgrade plan
-          for stable coverage across your whole space.
-        </p>
+          <p className={styles.subtitle}>
+            A badly designed network is usually to blame for slow Wi-Fi, dead zones,
+            and random dropouts. MeshNest helps you understand what’s wrong and how to fix it.
+          </p>
 
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-          <a
-            href="#contact"
-            style={{
-              padding: "12px 16px",
-              borderRadius: 10,
-              background: "#111",
-              color: "#fff",
-              fontWeight: 700,
-            }}
-          >
-            Book a Wi-Fi Health Check
-          </a>
+          <div className={styles.actions}>
+            <a href="#contact" className="btn btnPrimary">
+              Book a Wi-Fi Health Check
+            </a>
+            <a href="#services" className="btn btnSecondary">
+              View Services
+            </a>
 
-          <a
-            href="#services"
-            style={{
-              padding: "12px 16px",
-              borderRadius: 10,
-              border: "1px solid #111",
-              fontWeight: 700,
-            }}
-          >
-            See what’s included
-          </a>
-
-          <span style={{ fontSize: 14, opacity: 0.75 }}>
-            Typical reply within <strong>24 hours</strong>
-          </span>
-        </div>
-
-        <div style={{ marginTop: 22, display: "flex", gap: 10, flexWrap: "wrap" }}>
-          {[
-            "✅ Better coverage",
-            "✅ More stable speeds",
-            "✅ Security basics",
-            "✅ Clear next steps",
-          ].map((t) => (
-            <span
-              key={t}
-              style={{
-                fontSize: 14,
-                padding: "8px 10px",
-                borderRadius: 999,
-                border: "1px solid #eee",
-                background: "#fafafa",
-              }}
-            >
-              {t}
+            <span className={styles.trust}>
+              We usually reply within <strong>&nbsp;24 hours</strong>
             </span>
-          ))}
+          </div>
+
+          <div className={styles.chips} aria-label="Key benefits">
+            <span className={styles.chip}>Better coverage</span>
+            <span className={styles.chip}>More stable speeds</span>
+            <span className={styles.chip}>Security basics</span>
+            <span className={styles.chip}>Clear next steps</span>
+          </div>
+
+          <div className={styles.proof}>
+            <span>📍 Törökbálint & surrounding area</span>
+            <span>•</span>
+            <span>Homes + sole proprietors</span>
+            <span>•</span>
+            <span>Clear plan, no guesswork</span>
+          </div>
         </div>
       </div>
     </section>

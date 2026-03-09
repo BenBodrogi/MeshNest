@@ -1,0 +1,111 @@
+.hero {
+  position: relative;
+  padding: 96px 0 72px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Background image wrapper */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+/* Your content stays above background */
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+.kicker {
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin: 0 0 12px;
+}
+
+.dot {
+  opacity: 0.55;
+}
+
+.title {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -1px;
+  margin: -10px 0 56px;
+  max-width: 920px;
+}
+
+.subtitle {
+  font-size: 20px;
+  max-width: 720px;
+  margin: 0 0 34px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center; /* keeps everything centered */
+  margin-bottom: 28px;
+}
+
+.trust {
+  height: 48px;              /* match .btn height */
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--muted);
+  padding-left: 2px;         /* tiny optical nudge */
+}
+
+.chips {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  font-size: 14px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  opacity: 0.9;
+}
+
+.proof {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--muted);
+  opacity: 0.95;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 72px 0 56px;
+  }
+
+  .title {
+    font-size: 44px;
+    letter-spacing: -0.4px;
+  }
+}
