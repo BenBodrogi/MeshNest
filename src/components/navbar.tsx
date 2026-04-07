@@ -1,80 +1,107 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import styles from "./navbar.module.css";
+
+const NAV_ITEMS = [
+  { label: "Problems", href: "#problems" },
+  { label: "Approach", href: "#approach" },
+  { label: "Services", href: "#services" },
+  { label: "Why MeshNest", href: "#why-meshnest" },
+  { label: "Contact", href: "#contact" },
+];
+
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 8);
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    function onResize() {
+      if (window.innerWidth > 900) {
+        setMenuOpen(false);
+      }
+    }
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
   return (
-    <header
-      id="top"
-      style={{
-        position: "sticky",
-        top: 0,
-        background: "rgba(255,255,255,0.92)",
-        backdropFilter: "blur(10px)",
-        borderBottom: "1px solid #eee",
-        zIndex: 50,
-      }}
+    <nav
+      className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}
+      aria-label="Primary navigation"
     >
-      <nav
-        style={{
-          maxWidth: 1100,
-          margin: "0 auto",
-          padding: "14px 16px",
-          display: "flex",
-          gap: 14,
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <a
-          href="#top"
-          style={{
-            fontWeight: 800,
-            letterSpacing: 0.2,
-            display: "flex",
-            alignItems: "baseline",
-            gap: 10,
-          }}
-        >
-          MeshNest
-          <span style={{ fontSize: 12, fontWeight: 600, opacity: 0.6 }}>
-            Smarter Wi-Fi
-          </span>
+      <div className={`container ${styles.inner}`}>
+        <a href="#top" className={styles.brand} aria-label="MeshNest home">
+          <span className={styles.brandMark} aria-hidden="true" />
+          <span className={styles.brandText}>MeshNest</span>
         </a>
 
-        <div
-          style={{
-            display: "flex",
-            gap: 16,
-            alignItems: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          <a href="#services" style={{ fontWeight: 600 }}>
-            Services
-          </a>
-          <a href="#plan" style={{ fontWeight: 600 }}>
-            How it works
-          </a>
-          <a href="#about" style={{ fontWeight: 600 }}>
-            Problems
-          </a>
-          <a href="#contact" style={{ fontWeight: 600 }}>
-            Contact
+        <div className={styles.links}>
+          {NAV_ITEMS.map((item) => (
+            <a key={item.href} href={item.href} className={styles.navLink}>
+              {item.label}
+            </a>
+          ))}
+        </div>
+
+        <div className={styles.actions}>
+          <a href="#contact" className="btn btnPrimary">
+            Book a Health Check
           </a>
 
-          <a
-            href="#contact"
-            style={{
-              padding: "10px 14px",
-              borderRadius: 10,
-              background: "#111",
-              color: "#fff",
-              fontWeight: 800,
-              border: "1px solid #111",
-              whiteSpace: "nowrap",
-            }}
+          <button
+            type="button"
+            className={styles.menuButton}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((prev) => !prev)}
           >
-            Book a Wi-Fi Health Check
-          </a>
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
-      </nav>
-    </header>
+      </div>
+
+      <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}>
+        <div className="container">
+          <div className={styles.mobileNav}>
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={styles.mobileNavLink}
+                onClick={closeMenu}
+              >
+                {item.label}
+              </a>
+            ))}
+
+            <a
+              href="#contact"
+              className={`btn btnPrimary ${styles.mobileCta}`}
+              onClick={closeMenu}
+            >
+              Book a Health Check
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }

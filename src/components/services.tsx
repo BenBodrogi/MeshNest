@@ -1,83 +1,74 @@
-function ServiceCard({
-  title,
-  price,
-  bullets,
-  badge,
-}: {
+"use client";
+
+import Image from "next/image";
+import styles from "./services.module.css";
+import { useReveal } from "../app/hooks/useReveal";
+
+type ServiceCardProps = {
   title: string;
   price: string;
   bullets: string[];
-  badge?: string;
-}) {
+};
+
+function ServiceCard({ title, price, bullets }: ServiceCardProps) {
   return (
-    <div
-      style={{
-        border: "1px solid #eee",
-        borderRadius: 14,
-        padding: 20,
-        background: "#fff",
-        position: "relative",
-      }}
-    >
-      {badge ? (
-        <div
-          style={{
-            position: "absolute",
-            top: 14,
-            right: 14,
-            fontSize: 12,
-            fontWeight: 800,
-            padding: "6px 10px",
-            borderRadius: 999,
-            background: "#111",
-            color: "#fff",
-          }}
-        >
-          {badge}
-        </div>
-      ) : null}
+    <article className={styles.card}>
+      <div className={styles.cardHead}>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.price}>{price}</p>
+      </div>
 
-      <h3 style={{ margin: "0 0 8px", fontSize: 20 }}>{title}</h3>
-      <div style={{ fontWeight: 800, marginBottom: 12 }}>{price}</div>
-
-      <ul style={{ margin: 0, paddingLeft: 18, color: "#444", lineHeight: 1.6 }}>
-        {bullets.map((b) => (
-          <li key={b} style={{ marginBottom: 8 }}>
-            {b}
+      <ul className={styles.list}>
+        {bullets.map((bullet) => (
+          <li key={bullet} className={styles.listItem}>
+            <span className={styles.dot} aria-hidden="true" />
+            <span>{bullet}</span>
           </li>
         ))}
       </ul>
-    </div>
+
+      <a href="#contact" className={`btn btnPrimary ${styles.cardBtn}`}>
+        Ask About This
+      </a>
+    </article>
   );
 }
 
 export default function Services() {
+  const { ref, isVisible } = useReveal();
+
   return (
-    <section id="services" style={{ padding: "80px 16px", background: "#f7f7f7" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <h2 style={{ fontSize: 34, marginBottom: 14 }}>Services & packages</h2>
-
-        <p
+    <section
+      className={`sectionLarge sectionDivider ${styles.section}`}
+      id="services"
+      aria-label="MeshNest services"
+    >
+      <div className={styles.bg} aria-hidden="true">
+        <Image
+          src="/services-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
           style={{
-            maxWidth: 760,
-            marginTop: 0,
-            marginBottom: 32,
-            fontSize: 18,
-            lineHeight: 1.6,
-            color: "#555",
+            objectFit: "cover",
+            objectPosition: "60% center",
           }}
-        >
-          Clear packages for most homes. If you have a complex setup (thick walls, multiple floors, many devices, or a
-          small business), we’ll tailor a plan.
-        </p>
+        />
+      </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 20,
-          }}
-        >
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        className={`container reveal ${isVisible ? "revealVisible" : ""}`}
+      >
+        <div className={styles.head}>
+          <p className={styles.kicker}>Services</p>
+          <h2 className={styles.title}>Support that matches the size of the problem.</h2>
+          <p className={styles.sub}>
+            Start with a focused health check or plan a full upgrade for better coverage, stability, and day-to-day reliability.
+          </p>
+        </div>
+
+        <div className={styles.grid}>
           <ServiceCard
             title="Wi-Fi Health Check"
             price="From 39,000 HUF"
@@ -91,21 +82,10 @@ export default function Services() {
           <ServiceCard
             title="Home Wi-Fi Upgrade Plan"
             price="From 120,000 HUF"
-            badge="Most popular"
             bullets={[
               "Full coverage plan for your space (room-by-room)",
               "Hardware recommendations (router / mesh) + placement map",
               "Clean setup: safer smart-home basics + network separation (if needed)",
-            ]}
-          />
-
-          <ServiceCard
-            title="Care Plan"
-            price="From 12,000 HUF / month"
-            bullets={[
-              "Ongoing check-ins and stability monitoring",
-              "Security updates + quick health checks",
-              "Priority support when something breaks",
             ]}
           />
         </div>

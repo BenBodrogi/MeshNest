@@ -3,7 +3,7 @@ import styles from "./hero.module.css";
 
 export default function Hero() {
   return (
-    <section className={styles.hero} aria-label="MeshNest hero">
+    <section className={`sectionLarge sectionDivider ${styles.hero}`} aria-label="MeshNest hero">
       {/* Background image layer */}
       <div className={styles.bg} aria-hidden="true">
         <Image

@@ -1,0 +1,137 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.navbarScrolled {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.inner {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.brandMark {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(126, 63, 242, 0.16);
+}
+
+.brandText {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.links {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.navLink {
+  font-size: 14px;
+  color: var(--muted);
+  transition: color 140ms ease, opacity 140ms ease;
+}
+
+.navLink:hover {
+  color: var(--foreground);
+  opacity: 1;
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuButton {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.menuButton span {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--foreground);
+  display: block;
+}
+
+.mobileMenu {
+  display: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 10, 0.96);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 180ms ease;
+}
+
+.mobileMenuOpen {
+  max-height: 420px;
+}
+
+.mobileNav {
+  display: grid;
+  gap: 10px;
+  padding: 16px 0 18px;
+}
+
+.mobileNavLink {
+  color: var(--foreground);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobileCta {
+  margin-top: 8px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .links {
+    display: none;
+  }
+
+  .actions > a {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-flex;
+  }
+
+  .mobileMenu {
+    display: block;
+  }
+}

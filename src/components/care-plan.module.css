@@ -1,0 +1,98 @@
+.section {
+  position: relative;
+}
+
+.panel {
+  border-radius: 28px;
+  padding: 56px 24px;
+  text-align: center;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(126, 63, 242, 0.78),
+      rgba(126, 63, 242, 0.62)
+    );
+  border: 1px solid rgba(126, 63, 242, 0.35);
+  box-shadow: 0 18px 50px rgba(126, 63, 242, 0.16);
+}
+
+.kicker {
+  margin: 0 0 14px;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.title {
+  margin: 0 0 18px;
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  color: #fff;
+}
+
+.body {
+  margin: 0 auto 28px;
+  max-width: 840px;
+  font-size: 20px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.price {
+  margin: 0 0 28px;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cta {
+  min-width: 320px;
+  height: 56px;
+  border-radius: 18px;
+  background: rgba(18, 18, 18, 0.92);
+  color: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.92);
+  box-shadow: none;
+}
+
+.cta:hover {
+  background: #111;
+  border-color: #111;
+}
+
+@media (max-width: 900px) {
+  .title {
+    font-size: 48px;
+  }
+
+  .body {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: 40px 18px;
+    border-radius: 22px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .body {
+    font-size: 17px;
+  }
+
+  .price {
+    font-size: 16px;
+    letter-spacing: 0.4px;
+  }
+
+  .cta {
+    width: 100%;
+    min-width: 0;
+  }
+}

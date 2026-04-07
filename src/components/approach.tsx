@@ -1,63 +1,67 @@
-function Step({ n, title, text }: { n: string; title: string; text: string }) {
-  return (
-    <div
-      style={{
-        border: "1px solid #eee",
-        borderRadius: 14,
-        padding: 20,
-        background: "#fff",
-      }}
-    >
-      <div style={{ fontSize: 12, color: "#666", marginBottom: 8, letterSpacing: 0.4, textTransform: "uppercase" }}>
-        Step {n}
-      </div>
-      <h3 style={{ margin: "0 0 10px", fontSize: 20 }}>{title}</h3>
-      <p style={{ margin: 0, color: "#444", lineHeight: 1.6 }}>{text}</p>
-    </div>
-  );
-}
+"use client";
+
+import styles from "./approach.module.css";
+import { useReveal } from "../app/hooks/useReveal";
+
+const STEPS = [
+  {
+    number: "01",
+    title: "Assess",
+    body: "We look at your current setup, your space, and where the weak spots actually show up in daily use.",
+  },
+  {
+    number: "02",
+    title: "Recommend",
+    body: "You get clear, practical advice on what is causing the issue and which changes will make the biggest difference.",
+  },
+  {
+    number: "03",
+    title: "Improve",
+    body: "If needed, MeshNest helps refine the setup so coverage, stability, and day-to-day use all improve.",
+  },
+];
 
 export default function Approach() {
-  return (
-    <section id="plan" style={{ padding: "80px 16px" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <h2 style={{ fontSize: 34, marginBottom: 14 }}>How it works</h2>
-        <p
-          style={{
-            maxWidth: 760,
-            marginTop: 0,
-            marginBottom: 32,
-            fontSize: 18,
-            lineHeight: 1.6,
-            color: "#555",
-          }}
-        >
-          No guesswork, no random extenders. We start with a clear Wi-Fi Health Check, then give you a practical plan
-          to get stable coverage where you actually use it.
-        </p>
+  const { ref, isVisible } = useReveal();
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 20,
-          }}
-        >
-          <Step
-            n="1"
-            title="Wi-Fi Health Check"
-            text="We understand your space, your devices, and where the Wi-Fi fails. Then we pinpoint what’s causing the dropouts and dead zones."
-          />
-          <Step
-            n="2"
-            title="Fix the layout"
-            text="We recommend better router / mesh placement and settings, and if needed, the right upgrades—so every room gets reliable coverage."
-          />
-          <Step
-            n="3"
-            title="Lock it in"
-            text="We help you keep it stable: guest Wi-Fi, safer smart-home setup, and simple guidance so the network stays solid long-term."
-          />
+  return (
+    <section
+      className={`sectionTight sectionDivider ${styles.section}`}
+      id="approach"
+      aria-label="How MeshNest works"
+    >
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        className={`container reveal ${isVisible ? "revealVisible" : ""}`}
+      >
+        <div className={styles.head}>
+          <p className={styles.kicker}>How it works</p>
+          <h2 className={styles.title}>A clear process from diagnosis to a better network.</h2>
+          <p className={styles.sub}>
+            No guesswork, no jargon, and no unnecessary upgrades. Just a practical path to more reliable Wi-Fi.
+          </p>
+        </div>
+
+        <div className={styles.steps}>
+          {STEPS.map((step, index) => (
+            <article
+              key={step.number}
+              className={`${styles.step} reveal ${isVisible ? "revealVisible" : ""} ${
+                index === 0 ? "revealDelay1" : index === 1 ? "revealDelay2" : "revealDelay3"
+              }`}
+            >
+              <div className={styles.number}>{step.number}</div>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+              <p className={styles.stepBody}>{step.body}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className={styles.note}>
+          <p>
+            <strong>You stay in control throughout.</strong>
+            <span className={styles.noteMuted}> Clear next steps, honest recommendations, no pressure.</span>
+          </p>
         </div>
       </div>
     </section>

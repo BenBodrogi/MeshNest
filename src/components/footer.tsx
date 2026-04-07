@@ -1,15 +1,39 @@
+import styles from "./footer.module.css";
+
 export default function Footer() {
   return (
-    <footer style={{ padding: "28px 16px", borderTop: "1px solid #eee", background: "#fff" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-        <div>
-          <div style={{ fontWeight: 700 }}>MeshNest</div>
-          <div style={{ color: "#666", fontSize: 14 }}>Home networking • Hungary</div>
+    <footer className={styles.footer} aria-label="MeshNest footer">
+      <div className="container">
+
+        <div className={styles.top}>
+          <div className={styles.brandBlock}>
+            <a href="#top" className={styles.brand} aria-label="MeshNest home">
+              <span className={styles.brandMark} aria-hidden="true" />
+              <span className={styles.brandText}>MeshNest</span>
+            </a>
+
+            <p className={styles.tagline}>
+              Practical network design and setup for homes and small businesses.
+            </p>
+          </div>
+
+          <div className={styles.info}>
+            <p className={styles.label}>Service area</p>
+            <p className={styles.value}>Törökbálint & surrounding area</p>
+
+            <p className={`${styles.label} ${styles.labelSpacing}`}>
+              Response time
+            </p>
+            <p className={styles.value}>Usually within 24 hours</p>
+          </div>
         </div>
 
-        <div style={{ color: "#666", fontSize: 14 }}>
-          © {new Date().getFullYear()} MeshNest. All rights reserved.
+        <div className={styles.bottom}>
+          <p className={styles.copy}>
+            © {new Date().getFullYear()} MeshNest. All rights reserved.
+          </p>
         </div>
+
       </div>
     </footer>
   );
