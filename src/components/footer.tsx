@@ -34,7 +34,7 @@ export default function Footer() {
             <a href="https://virdana.dev" target="_blank" rel="noopener noreferrer" className={styles.virdanaLink}>
               The Virdana Group
             </a>{" "}
-            All rights reserved.
+            . All rights reserved.
           </p>
         </div>
 
