@@ -69,8 +69,8 @@ export default function Contact() {
             <p className={styles.kicker}>Get in touch</p>
             <h2 className={styles.title}>Book a Wi-Fi audit</h2>
             <p className={styles.sub}>
-              Tell MeshNest a bit about your space and what you’re trying to fix.
-              You’ll get practical next steps and a rough estimate.
+              Describe your space and what’s been giving you trouble.
+              You’ll hear back with a clear plan and a rough price.
             </p>
 
             <ul className={styles.points}>

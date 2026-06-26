@@ -6,7 +6,7 @@ import { useReveal } from "../app/hooks/useReveal";
 const POINTS = [
   {
     title: "Clear recommendations",
-    body: "You get straightforward advice on what matters, what does not, and what to do next.",
+    body: "You'll know what the problem is, whether it's worth fixing, and what to do first.",
   },
   {
     title: "No unnecessary upgrades",
@@ -14,11 +14,11 @@ const POINTS = [
   },
   {
     title: "Designed for real homes",
-    body: "Recommendations are based on layout, usage, and everyday reliability, not generic specs.",
+    body: "Advice based on your layout and how you actually use the space — not a generic checklist.",
   },
   {
     title: "Local and personal",
-    body: "MeshNest is built around practical support, clear communication, and a more personal service experience.",
+    body: "One point of contact. Real explanations. No call centre.",
   },
 ];
 
@@ -42,9 +42,8 @@ export default function WhyMeshNest() {
               Practical help, clear advice, and no unnecessary complexity.
             </h2>
             <p className={styles.sub}>
-              MeshNest is built around solving real Wi-Fi problems in a way that
-              feels understandable, honest, and tailored to the space you
-              actually use every day.
+              Wi-Fi advice that fits where you actually live — not a generic
+              spec sheet or an upsell.
             </p>
           </div>
 
@@ -55,7 +54,7 @@ export default function WhyMeshNest() {
                 className={`${styles.card} reveal ${isVisible ? "revealVisible" : ""} ${
                   index === 0 ? "revealDelay1" :
                   index === 1 ? "revealDelay2" :
-                  index === 2 ? "revealDelay1" : "revealDelay2"
+                  index === 2 ? "revealDelay3" : "revealDelay4"
                 }`}
               >
                 <h3 className={styles.cardTitle}>{point.title}</h3>

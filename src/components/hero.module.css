@@ -25,6 +25,24 @@
 .inner {
   position: relative;
   z-index: 1;
+  animation: heroFadeUp 650ms ease both;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner {
+    animation: none;
+  }
 }
 
 .kicker {

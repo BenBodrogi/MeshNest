@@ -57,7 +57,7 @@
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: rgba(126, 63, 242, 0.75);
+  background: rgba(27, 138, 120, 0.75);
 }
 
 .form,
@@ -107,8 +107,8 @@
 .field select:focus,
 .field textarea:focus {
   outline: none;
-  border-color: rgba(126, 63, 242, 0.6);
-  box-shadow: 0 0 0 3px rgba(126, 63, 242, 0.12);
+  border-color: rgba(27, 138, 120, 0.6);
+  box-shadow: 0 0 0 3px rgba(27, 138, 120, 0.12);
 }
 
 .field textarea {

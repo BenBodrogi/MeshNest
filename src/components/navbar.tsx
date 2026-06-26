@@ -48,7 +48,10 @@ export default function Navbar() {
       <div className={`container ${styles.inner}`}>
         <a href="#top" className={styles.brand} aria-label="MeshNest home">
           <span className={styles.brandMark} aria-hidden="true" />
-          <span className={styles.brandText}>MeshNest</span>
+          <span className={styles.brandStack}>
+            <span className={styles.brandText}>MeshNest</span>
+            <span className={styles.brandSub}>by Virdana</span>
+          </span>
         </a>
 
         <div className={styles.links}>

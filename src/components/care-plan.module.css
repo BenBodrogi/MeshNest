@@ -3,17 +3,16 @@
 }
 
 .panel {
-  border-radius: 28px;
+  border-radius: 24px;
   padding: 56px 24px;
   text-align: center;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(126, 63, 242, 0.78),
-      rgba(126, 63, 242, 0.62)
-    );
-  border: 1px solid rgba(126, 63, 242, 0.35);
-  box-shadow: 0 18px 50px rgba(126, 63, 242, 0.16);
+  background: linear-gradient(
+    135deg,
+    rgba(27, 138, 120, 0.82),
+    rgba(18, 108, 94, 0.68)
+  );
+  border: 1px solid rgba(27, 138, 120, 0.30);
+  box-shadow: 0 18px 50px rgba(27, 138, 120, 0.14);
 }
 
 .kicker {
@@ -26,9 +25,9 @@
 
 .title {
   margin: 0 0 18px;
-  font-size: 64px;
+  font-size: 56px;
   line-height: 1.05;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.8px;
   color: #fff;
 }
 
@@ -37,34 +36,35 @@
   max-width: 840px;
   font-size: 20px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.90);
 }
 
 .price {
   margin: 0 0 28px;
   font-size: 18px;
-  letter-spacing: 0.8px;
-  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.6px;
+  color: rgba(255, 255, 255, 0.80);
 }
 
 .cta {
-  min-width: 320px;
-  height: 56px;
-  border-radius: 18px;
-  background: rgba(18, 18, 18, 0.92);
+  min-width: 280px;
+  height: 52px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
-  border: 1px solid rgba(18, 18, 18, 0.92);
+  border-color: rgba(255, 255, 255, 0.30);
   box-shadow: none;
 }
 
 .cta:hover {
-  background: #111;
-  border-color: #111;
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.45);
+  opacity: 1;
 }
 
 @media (max-width: 900px) {
   .title {
-    font-size: 48px;
+    font-size: 42px;
   }
 
   .body {
@@ -75,11 +75,11 @@
 @media (max-width: 640px) {
   .panel {
     padding: 40px 18px;
-    border-radius: 22px;
+    border-radius: 18px;
   }
 
   .title {
-    font-size: 38px;
+    font-size: 34px;
   }
 
   .body {
@@ -88,7 +88,6 @@
 
   .price {
     font-size: 16px;
-    letter-spacing: 0.4px;
   }
 
   .cta {

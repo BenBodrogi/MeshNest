@@ -7,17 +7,17 @@ const STEPS = [
   {
     number: "01",
     title: "Assess",
-    body: "We look at your current setup, your space, and where the weak spots actually show up in daily use.",
+    body: "A look at your setup, your floor plan, and where things actually drop off — not just what the router says.",
   },
   {
     number: "02",
     title: "Recommend",
-    body: "You get clear, practical advice on what is causing the issue and which changes will make the biggest difference.",
+    body: "Plain-English advice on what's causing it and which change will make the biggest difference.",
   },
   {
     number: "03",
     title: "Improve",
-    body: "If needed, MeshNest helps refine the setup so coverage, stability, and day-to-day use all improve.",
+    body: "If you want help implementing it, MeshNest can handle the setup so you don't have to figure it out alone.",
   },
 ];
 
@@ -59,8 +59,8 @@ export default function Approach() {
 
         <div className={styles.note}>
           <p>
-            <strong>You stay in control throughout.</strong>
-            <span className={styles.noteMuted}> Clear next steps, honest recommendations, no pressure.</span>
+            <strong>No obligation after the assessment.</strong>
+            <span className={styles.noteMuted}> The recommendations are yours to act on however you like.</span>
           </p>
         </div>
       </div>
