@@ -30,11 +30,11 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copy}>
-            © {new Date().getFullYear()} MeshNest — a{" "}
+            © {new Date().getFullYear()} MeshNest — powered by {" "}
             <a href="https://virdana.dev" target="_blank" rel="noopener noreferrer" className={styles.virdanaLink}>
-              Virdana
+              The Virdana Group
             </a>{" "}
-            product. All rights reserved.
+            All rights reserved.
           </p>
         </div>
 
