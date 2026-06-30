@@ -3,12 +3,16 @@
 import { useRef, useState } from "react";
 import { useReveal } from "../app/hooks/useReveal";
 import styles from "./contact.module.css";
+import { useLang } from "../context/LanguageContext";
+import { t } from "../lib/translations";
 
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const { ref, isVisible } = useReveal();
+  const { lang } = useLang();
+  const c = t.contact;
 
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string>("");
@@ -35,16 +39,16 @@ export default function Contact() {
 
       if (!res.ok || !data.ok) {
         setStatus("error");
-        setMessage(data?.error || "Something went wrong.");
+        setMessage(data?.error || c.errGeneric[lang]);
         return;
       }
 
       setStatus("success");
-      setMessage("Request received. I’ll get back to you soon.");
+      setMessage(c.successApiMsg[lang]);
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("Network error. Please try again.");
+      setMessage(c.errNetwork[lang]);
     }
   }
 
@@ -66,32 +70,27 @@ export default function Contact() {
       >
         <div className={styles.layout}>
           <div className={styles.intro}>
-            <p className={styles.kicker}>Get in touch</p>
-            <h2 className={styles.title}>Book a Wi-Fi audit</h2>
-            <p className={styles.sub}>
-              Describe your space and what’s been giving you trouble.
-              You’ll hear back with a clear plan and a rough price.
-            </p>
+            <p className={styles.kicker}>{c.kicker[lang]}</p>
+            <h2 className={styles.title}>{c.title[lang]}</h2>
+            <p className={styles.sub}>{c.sub[lang]}</p>
 
             <ul className={styles.points}>
-              <li>Usually reply within 24 hours</li>
-              <li>No obligation consultation</li>
-              <li>Serving Törökbálint & nearby areas</li>
+              <li>{c.point1[lang]}</li>
+              <li>{c.point2[lang]}</li>
+              <li>{c.point3[lang]}</li>
             </ul>
           </div>
 
           {status === "success" ? (
             <div className={`surface ${styles.successCard}`}>
-              <div className={styles.successTitle}>✅ Request sent</div>
+              <div className={styles.successTitle}>{c.successTitle[lang]}</div>
 
               <div className={styles.successMessage}>
-                {message || "Thanks! I’ll get back to you soon."}
+                {message || c.successMsg[lang]}
               </div>
 
               <div className={styles.successMeta}>
-                Typical response time: <strong>within 24 hours</strong>.
-                <br />
-                If it’s urgent, mention it in your next message and I’ll prioritize it.
+                {c.successMeta[lang]}
               </div>
 
               <button
@@ -99,7 +98,7 @@ export default function Contact() {
                 onClick={resetForm}
                 className={`btn btnPrimary ${styles.resetBtn}`}
               >
-                Send another request
+                {c.sendAnother[lang]}
               </button>
             </div>
           ) : (
@@ -114,41 +113,41 @@ export default function Contact() {
               </label>
 
               <label className={styles.field}>
-                <span>Name</span>
+                <span>{c.fieldName[lang]}</span>
                 <input required name="name" />
               </label>
 
               <label className={styles.field}>
-                <span>Email</span>
+                <span>{c.fieldEmail[lang]}</span>
                 <input required type="email" name="email" />
               </label>
 
               <label className={styles.field}>
-                <span>Property type</span>
+                <span>{c.fieldProperty[lang]}</span>
                 <select name="propertyType">
-                  <option>Apartment</option>
-                  <option>House</option>
-                  <option>Small business</option>
+                  <option>{c.optApartment[lang]}</option>
+                  <option>{c.optHouse[lang]}</option>
+                  <option>{c.optBusiness[lang]}</option>
                 </select>
               </label>
 
               <label className={styles.field}>
-                <span>Area (m²)</span>
-                <input name="area" placeholder="e.g., 80" />
+                <span>{c.fieldArea[lang]}</span>
+                <input name="area" placeholder={c.areaPlaceholder[lang]} />
               </label>
 
               <label className={`${styles.field} ${styles.fullWidth}`}>
-                <span>What issues are you facing?</span>
+                <span>{c.fieldIssues[lang]}</span>
                 <textarea name="issues" rows={4} />
               </label>
 
               <label className={`${styles.field} ${styles.fullWidth}`}>
-                <span>Timeline</span>
+                <span>{c.fieldTimeline[lang]}</span>
                 <select name="timeline">
-                  <option>ASAP</option>
-                  <option>1–2 weeks</option>
-                  <option>Within a month</option>
-                  <option>Just researching</option>
+                  <option>{c.optAsap[lang]}</option>
+                  <option>{c.opt1to2weeks[lang]}</option>
+                  <option>{c.optMonth[lang]}</option>
+                  <option>{c.optResearching[lang]}</option>
                 </select>
               </label>
 
@@ -157,7 +156,7 @@ export default function Contact() {
                 disabled={status === "sending"}
                 className={`btn btnPrimary ${styles.submitBtn}`}
               >
-                {status === "sending" ? "Sending..." : "Send request"}
+                {status === "sending" ? c.sending[lang] : c.submit[lang]}
               </button>
 
               {status === "error" && message ? (

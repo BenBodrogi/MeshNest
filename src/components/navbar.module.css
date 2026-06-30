@@ -28,6 +28,13 @@
   flex: 0 0 auto;
 }
 
+.logo {
+  height: 34px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
 .brandMark {
   width: 10px;
   height: 10px;
@@ -132,12 +139,57 @@
   width: 100%;
 }
 
+.langToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.langBtn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: color 140ms ease;
+  line-height: 1;
+}
+
+.langBtn:hover {
+  color: var(--foreground);
+}
+
+.langBtnActive {
+  color: var(--accent);
+}
+
+.langDivider {
+  color: var(--border);
+  font-size: 11px;
+  user-select: none;
+}
+
+.mobileLangToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
 @media (max-width: 900px) {
   .links {
     display: none;
   }
 
   .actions > a {
+    display: none;
+  }
+
+  .langToggle {
     display: none;
   }
 

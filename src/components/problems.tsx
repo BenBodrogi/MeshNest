@@ -2,35 +2,13 @@
 
 import styles from "./problems.module.css";
 import { useReveal } from "../app/hooks/useReveal";
-
-const PROBLEMS = [
-  {
-    title: "Dead zones",
-    body: "Rooms where Wi-Fi drops off completely or becomes unreliable the moment you move.",
-  },
-  {
-    title: "Random dropouts",
-    body: "Calls freeze, streams buffer, and devices disconnect at the worst possible time.",
-  },
-  {
-    title: "Unstable speeds",
-    body: "Everything looks fine on paper until several devices are online at once.",
-  },
-  {
-    title: "Messy network setups",
-    body: "Old routers, extenders, and mismatched gear often create more problems than they solve.",
-  },
-];
-
-const EFFECTS = [
-  "Video calls that cut out",
-  "Buffering at peak hours",
-  "Smart home devices going offline",
-  "Wi-Fi that only works properly near the router",
-];
+import { useLang } from "../context/LanguageContext";
+import { t } from "../lib/translations";
 
 export default function Problems() {
   const { ref, isVisible } = useReveal();
+  const { lang } = useLang();
+  const p = t.problems;
 
   return (
     <section
@@ -43,30 +21,27 @@ export default function Problems() {
         className={`container reveal ${isVisible ? "revealVisible" : ""}`}
       >
         <div className={styles.head}>
-          <p className={styles.kicker}>Common problems</p>
-          <h2 className={styles.title}>Most Wi-Fi issues aren’t internet problems.</h2>
-          <p className={styles.sub}>
-            They usually come down to layout, placement, interference, or outdated equipment.
-            Once the real bottleneck is clear, the fix becomes much simpler.
-          </p>
+          <p className={styles.kicker}>{p.kicker[lang]}</p>
+          <h2 className={styles.title}>{p.title[lang]}</h2>
+          <p className={styles.sub}>{p.sub[lang]}</p>
         </div>
 
         <div className={styles.grid}>
-          {PROBLEMS.map((item) => (
-            <article key={item.title} className={styles.card}>
-              <h3 className={styles.cardTitle}>{item.title}</h3>
-              <p className={styles.cardBody}>{item.body}</p>
+          {p.cards.map((card) => (
+            <article key={card.title.en} className={styles.card}>
+              <h3 className={styles.cardTitle}>{card.title[lang]}</h3>
+              <p className={styles.cardBody}>{card.body[lang]}</p>
             </article>
           ))}
         </div>
 
         <div className={styles.effects}>
-          <p className={styles.effectsTitle}>What this often looks like day to day</p>
+          <p className={styles.effectsTitle}>{p.effectsTitle[lang]}</p>
           <div className={styles.effectsGrid}>
-            {EFFECTS.map((effect) => (
-              <div key={effect} className={styles.effectItem}>
+            {p.effects.map((effect) => (
+              <div key={effect.en} className={styles.effectItem}>
                 <span className={styles.effectDot} />
-                <span>{effect}</span>
+                <span>{effect[lang]}</span>
               </div>
             ))}
           </div>
@@ -74,8 +49,8 @@ export default function Problems() {
 
         <div className={styles.bottomNote}>
           <p>
-            <strong>Not sure what’s causing yours?</strong>
-            <span className={styles.bottomMuted}> A Wi-Fi Health Check helps identify the issue and gives you a clear next step.</span>
+            <strong>{p.bottomStrong[lang]}</strong>
+            <span className={styles.bottomMuted}>{p.bottomMuted[lang]}</span>
           </p>
         </div>
       </div>

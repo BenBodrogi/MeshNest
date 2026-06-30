@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "../context/LanguageContext";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -69,8 +70,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="hu">
       <body className={`${outfit.variable} antialiased`}>
+        <LanguageProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -103,6 +105,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,10 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./hero.module.css";
+import { useLang } from "../context/LanguageContext";
+import { t } from "../lib/translations";
 
 export default function Hero() {
+  const { lang } = useLang();
+  const h = t.hero;
+
   return (
     <section className={`sectionLarge sectionDivider ${styles.hero}`} aria-label="MeshNest hero">
-      {/* Background image layer */}
       <div className={styles.bg} aria-hidden="true">
         <Image
           src="/hero-bg_v2.jpg"
@@ -21,44 +27,45 @@ export default function Hero() {
       <div className="container">
         <div className={styles.inner}>
           <h1 className={styles.title}>
-            Designed.
+            {h.titleLine1[lang]}
             <br />
-            Secured.
+            {h.titleLine2[lang]}
             <br />
-            Managed.
+            {h.titleLine3[lang]}
           </h1>
 
-          <p className={styles.subtitle}>
-            A badly designed network is usually to blame for slow Wi-Fi, dead zones,
-            and random dropouts. MeshNest helps you understand what’s wrong and how to fix it.
-          </p>
+          <p className={styles.subtitle}>{h.subtitle[lang]}</p>
 
           <div className={styles.actions}>
             <a href="#contact" className="btn btnPrimary">
-              Book a Wi-Fi Health Check
+              {h.ctaPrimary[lang]}
             </a>
             <a href="#services" className="btn btnSecondary">
-              View Services
+              {h.ctaSecondary[lang]}
             </a>
 
             <span className={styles.trust}>
-              We usually reply within <strong>&nbsp;24 hours</strong>
+              {lang === "en" ? (
+                <>We usually reply within <strong>&nbsp;24 hours</strong></>
+              ) : (
+                h.trustBadge[lang]
+              )}
             </span>
           </div>
 
           <div className={styles.chips} aria-label="Key benefits">
-            <span className={styles.chip}>Better coverage</span>
-            <span className={styles.chip}>More stable speeds</span>
-            <span className={styles.chip}>Security basics</span>
-            <span className={styles.chip}>Clear next steps</span>
+            <span className={styles.chip}>{h.chip1[lang]}</span>
+            <span className={styles.chip}>{h.chip2[lang]}</span>
+            <span className={styles.chip}>{h.chip3[lang]}</span>
+            <span className={styles.chip}>{h.chip4[lang]}</span>
           </div>
 
           <div className={styles.proof}>
-            <span>📍 Törökbálint & surrounding area</span>
+            <span>📍 {h.proofArea[lang]}</span>
             <span>•</span>
-            <span>Homes + sole proprietors</span>
+            <span>{h.proofWho[lang]}</span>
             <span>•</span>
-            <span>Clear plan, no guesswork</span>
+            <span>{h.proofPlan[lang]}</span>
           </div>
         </div>
       </div>

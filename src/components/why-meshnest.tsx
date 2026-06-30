@@ -2,28 +2,13 @@
 
 import styles from "./why-meshnest.module.css";
 import { useReveal } from "../app/hooks/useReveal";
-
-const POINTS = [
-  {
-    title: "Clear recommendations",
-    body: "You'll know what the problem is, whether it's worth fixing, and what to do first.",
-  },
-  {
-    title: "No unnecessary upgrades",
-    body: "If your current setup can be improved without replacing everything, that comes first.",
-  },
-  {
-    title: "Designed for real homes",
-    body: "Advice based on your layout and how you actually use the space — not a generic checklist.",
-  },
-  {
-    title: "Local and personal",
-    body: "One point of contact. Real explanations. No call centre.",
-  },
-];
+import { useLang } from "../context/LanguageContext";
+import { t } from "../lib/translations";
 
 export default function WhyMeshNest() {
   const { ref, isVisible } = useReveal();
+  const { lang } = useLang();
+  const w = t.whyMeshNest;
 
   return (
     <section
@@ -37,28 +22,23 @@ export default function WhyMeshNest() {
       >
         <div className={styles.layout}>
           <div className={styles.intro}>
-            <p className={styles.kicker}>Why MeshNest</p>
-            <h2 className={styles.title}>
-              Practical help, clear advice, and no unnecessary complexity.
-            </h2>
-            <p className={styles.sub}>
-              Wi-Fi advice that fits where you actually live — not a generic
-              spec sheet or an upsell.
-            </p>
+            <p className={styles.kicker}>{w.kicker[lang]}</p>
+            <h2 className={styles.title}>{w.title[lang]}</h2>
+            <p className={styles.sub}>{w.sub[lang]}</p>
           </div>
 
           <div className={styles.grid}>
-            {POINTS.map((point, index) => (
+            {w.points.map((point, index) => (
               <article
-                key={point.title}
+                key={point.title.en}
                 className={`${styles.card} reveal ${isVisible ? "revealVisible" : ""} ${
                   index === 0 ? "revealDelay1" :
                   index === 1 ? "revealDelay2" :
                   index === 2 ? "revealDelay3" : "revealDelay4"
                 }`}
               >
-                <h3 className={styles.cardTitle}>{point.title}</h3>
-                <p className={styles.cardBody}>{point.body}</p>
+                <h3 className={styles.cardTitle}>{point.title[lang]}</h3>
+                <p className={styles.cardBody}>{point.body[lang]}</p>
               </article>
             ))}
           </div>

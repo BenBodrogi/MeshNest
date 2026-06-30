@@ -3,14 +3,18 @@
 import Image from "next/image";
 import styles from "./services.module.css";
 import { useReveal } from "../app/hooks/useReveal";
+import { useLang } from "../context/LanguageContext";
+import { t } from "../lib/translations";
+import type { Lang } from "../lib/translations";
 
 type ServiceCardProps = {
   title: string;
   price: string;
   bullets: string[];
+  btnLabel: string;
 };
 
-function ServiceCard({ title, price, bullets }: ServiceCardProps) {
+function ServiceCard({ title, price, bullets, btnLabel }: ServiceCardProps) {
   return (
     <article className={styles.card}>
       <div className={styles.cardHead}>
@@ -28,7 +32,7 @@ function ServiceCard({ title, price, bullets }: ServiceCardProps) {
       </ul>
 
       <a href="#contact" className={`btn btnPrimary ${styles.cardBtn}`}>
-        Ask About This
+        {btnLabel}
       </a>
     </article>
   );
@@ -36,6 +40,8 @@ function ServiceCard({ title, price, bullets }: ServiceCardProps) {
 
 export default function Services() {
   const { ref, isVisible } = useReveal();
+  const { lang } = useLang();
+  const s = t.services;
 
   return (
     <section
@@ -49,10 +55,7 @@ export default function Services() {
           alt=""
           fill
           sizes="100vw"
-          style={{
-            objectFit: "cover",
-            objectPosition: "60% center",
-          }}
+          style={{ objectFit: "cover", objectPosition: "60% center" }}
         />
       </div>
 
@@ -61,33 +64,21 @@ export default function Services() {
         className={`container reveal ${isVisible ? "revealVisible" : ""}`}
       >
         <div className={styles.head}>
-          <p className={styles.kicker}>Services</p>
-          <h2 className={styles.title}>Support that matches the size of the problem.</h2>
-          <p className={styles.sub}>
-            Start with a focused health check or plan a full upgrade for better coverage, stability, and day-to-day reliability.
-          </p>
+          <p className={styles.kicker}>{s.kicker[lang]}</p>
+          <h2 className={styles.title}>{s.title[lang]}</h2>
+          <p className={styles.sub}>{s.sub[lang]}</p>
         </div>
 
         <div className={styles.grid}>
-          <ServiceCard
-            title="Wi-Fi Health Check"
-            price="From 39,000 HUF"
-            bullets={[
-              "Pinpoint dead zones and the cause of dropouts",
-              "Practical fixes: placement + settings recommendations",
-              "Simple security sanity check (guest Wi-Fi, router basics)",
-            ]}
-          />
-
-          <ServiceCard
-            title="Home Wi-Fi Upgrade Plan"
-            price="From 120,000 HUF"
-            bullets={[
-              "Full coverage plan for your space (room-by-room)",
-              "Hardware recommendations (router / mesh) + placement map",
-              "Clean setup: safer smart-home basics + network separation (if needed)",
-            ]}
-          />
+          {s.cards.map((card) => (
+            <ServiceCard
+              key={card.title.en}
+              title={card.title[lang]}
+              price={card.price[lang]}
+              bullets={card.bullets.map((b) => b[lang as Lang])}
+              btnLabel={s.cardBtn[lang]}
+            />
+          ))}
         </div>
       </div>
     </section>
