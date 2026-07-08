@@ -30,7 +30,7 @@ export default function Navbar() {
 
   useEffect(() => {
     function onResize() {
-      if (window.innerWidth > 900) setMenuOpen(false);
+      if (window.innerWidth > 1040) setMenuOpen(false);
     }
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -54,6 +54,7 @@ export default function Navbar() {
             height={36}
             className={styles.logo}
             aria-hidden="true"
+            priority
           />
           <span className={styles.brandStack}>
             <span className={styles.brandText}>MeshNest</span>

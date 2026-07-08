@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "../context/LanguageContext";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const baseUrl = "https://mesh-nest.vercel.app";
@@ -71,7 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hu">
-      <body className={`${outfit.variable} antialiased`}>
+      <body className={`${fraunces.variable} ${manrope.variable} antialiased`}>
         <LanguageProvider>
         <script
           type="application/ld+json"

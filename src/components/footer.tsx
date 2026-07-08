@@ -47,7 +47,7 @@ export default function Footer() {
             {lang === "hu" ? "üzemelteti: " : "powered by "}
             <a href="https://virdana.dev" target="_blank" rel="noopener noreferrer" className={styles.virdanaLink}>
               The Virdana Group
-            </a>{" "}
+            </a>
             . {f.copy[lang]}
           </p>
         </div>

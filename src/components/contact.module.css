@@ -92,7 +92,7 @@
   background: var(--surface-alt);
   color: var(--foreground);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 12px 14px;
   font: inherit;
   transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
@@ -133,9 +133,17 @@
 }
 
 .successTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.2px;
+}
+
+.successIcon {
+  flex-shrink: 0;
+  color: var(--accent);
 }
 
 .successMessage {

@@ -12,11 +12,16 @@ type ServiceCardProps = {
   price: string;
   bullets: string[];
   btnLabel: string;
+  featured?: boolean;
+  featuredLabel?: string;
 };
 
-function ServiceCard({ title, price, bullets, btnLabel }: ServiceCardProps) {
+function ServiceCard({ title, price, bullets, btnLabel, featured, featuredLabel }: ServiceCardProps) {
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} ${featured ? styles.featured : ""}`}>
+      {featured && featuredLabel ? (
+        <span className={styles.badge}>{featuredLabel}</span>
+      ) : null}
       <div className={styles.cardHead}>
         <h3 className={styles.cardTitle}>{title}</h3>
         <p className={styles.price}>{price}</p>
@@ -70,13 +75,15 @@ export default function Services() {
         </div>
 
         <div className={styles.grid}>
-          {s.cards.map((card) => (
+          {s.cards.map((card, index) => (
             <ServiceCard
               key={card.title.en}
               title={card.title[lang]}
               price={card.price[lang]}
               bullets={card.bullets.map((b) => b[lang as Lang])}
               btnLabel={s.cardBtn[lang]}
+              featured={index === 1}
+              featuredLabel={s.featuredBadge[lang]}
             />
           ))}
         </div>

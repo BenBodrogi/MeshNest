@@ -2,15 +2,14 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 10, 10, 0.72);
-  backdrop-filter: blur(14px);
+  background: var(--background);
   border-bottom: 1px solid transparent;
   transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
 .navbarScrolled {
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  border-bottom-color: var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .inner {
@@ -33,14 +32,8 @@
   width: auto;
   display: block;
   flex-shrink: 0;
-}
-
-.brandMark {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 5px rgba(27, 138, 120, 0.16);
+  border-radius: 8px;
+  margin-top: 6px;
 }
 
 .brandStack {
@@ -72,6 +65,7 @@
 .navLink {
   font-size: 14px;
   color: var(--muted);
+  white-space: nowrap;
   transition: color 140ms ease, opacity 140ms ease;
 }
 
@@ -92,8 +86,8 @@
   height: 46px;
   padding: 0;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  background: var(--surface-alt);
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -111,8 +105,8 @@
 
 .mobileMenu {
   display: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(10, 10, 10, 0.96);
+  border-top: 1px solid var(--border);
+  background: var(--background);
   max-height: 0;
   overflow: hidden;
   transition: max-height 180ms ease;
@@ -131,7 +125,7 @@
 .mobileNavLink {
   color: var(--foreground);
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border);
 }
 
 .mobileCta {
@@ -177,10 +171,10 @@
   align-items: center;
   gap: 6px;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1040px) {
   .links {
     display: none;
   }

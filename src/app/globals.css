@@ -10,7 +10,7 @@
   --surface-alt: #f2efe8;
 
   --container: 1100px;
-  --radius: 14px;
+  --radius: 8px;
 
   --pad-x: 16px;
   --section-y: 80px;
@@ -28,7 +28,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-outfit);
+  --font-sans: var(--font-manrope);
+  --font-heading: var(--font-fraunces);
   --font-mono: ui-monospace, monospace;
 }
 
@@ -76,6 +77,13 @@ p {
   line-height: 1.65;
 }
 
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), Georgia, serif;
+  font-weight: 600;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -88,7 +96,7 @@ a:hover {
 :focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 ::selection {
@@ -209,7 +217,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 700;
   font-size: 15px;
   border: 1px solid transparent;
