@@ -5,32 +5,32 @@ export const t = {
     problems:    { hu: "Problémák",         en: "Problems" },
     approach:    { hu: "Hogyan dolgozunk",   en: "Approach" },
     services:    { hu: "Szolgáltatások",    en: "Services" },
-    whyMeshNest: { hu: "Miért MeshNest",    en: "Why MeshNest" },
+    whyMeshNest: { hu: "Miért a MeshNest",    en: "Why MeshNest" },
     contact:     { hu: "Kapcsolat",         en: "Contact" },
-    cta:         { hu: "Hálózati ellenőrzés", en: "Book a Health Check" },
+    cta:         { hu: "Hálózat ellenőrzése", en: "Book a Health Check" },
     openMenu:    { hu: "Menü megnyitása",   en: "Open menu" },
     closeMenu:   { hu: "Menü bezárása",     en: "Close menu" },
   },
 
   hero: {
-    titleLine1:  { hu: "Tervezve.",         en: "Designed." },
-    titleLine2:  { hu: "Védve.",            en: "Secured." },
+    titleLine1:  { hu: "Tervezés.",         en: "Designed." },
+    titleLine2:  { hu: "Védelem.",            en: "Secured." },
     titleLine3:  { hu: "Melletted.",        en: "Managed." },
     subtitle:    {
-      hu: "A rosszul tervezett hálózat a felelős a lassú Wi-Fi-ért, a lefedettségi hiányokért és a véletlenszerű kiesésekért. A MeshNest segít megérteni, mi a gond, és hogyan lehet megoldani.",
+      hu: "A rosszul tervezett hálózat a felelős a lassú Wi-Fi-ért, a lefedettségi hiányokért és a véletlenszerű kiesésekért. A MeshNest segít megérteni, hogy mi a gond és hogyan lehet megoldani.",
       en: "A badly designed network is usually to blame for slow Wi-Fi, dead zones, and random dropouts. MeshNest helps you understand what's wrong and how to fix it.",
     },
-    ctaPrimary:   { hu: "Wi-Fi ellenőrzés foglalása", en: "Book a Wi-Fi Health Check" },
+    ctaPrimary:   { hu: "Wi-Fi ellenőrzés foglalása",  en: "Book a Wi-Fi Health Check" },
     ctaSecondary: { hu: "Szolgáltatások",              en: "View Services" },
     trustBadge:   { hu: "Általában 24 órán belül válaszolunk", en: "We usually reply within" },
     trustBold:    { hu: "",                            en: " 24 hours" },
     chip1:        { hu: "Jobb lefedettség",            en: "Better coverage" },
     chip2:        { hu: "Stabilabb sebesség",          en: "More stable speeds" },
     chip3:        { hu: "Alapvető biztonság",          en: "Security basics" },
-    chip4:        { hu: "Egyértelmű következő lépések", en: "Clear next steps" },
-    proofArea:    { hu: "Törökbálint és környéke",    en: "Törökbálint & surrounding area" },
+    chip4:        { hu: "Egyértelmű konklúzió",        en: "Clear next steps" },
+    proofArea:    { hu: "Törökbálint és környéke",     en: "Törökbálint & surrounding area" },
     proofWho:     { hu: "Lakossági ügyfelek és egyéni vállalkozók", en: "Homes and sole proprietors" },
-    proofPlan:    { hu: "Egyszerűen megtervezve", en: "Clear, straightforward plan" },
+    proofPlan:    { hu: "Egyszerűen megtervezett kivitelezés",      en: "Clear, straightforward plan" },
   },
 
   problems: {
@@ -62,7 +62,7 @@ export const t = {
     effects: [
       { hu: "Megszakadó videóhívások",              en: "Video calls that cut out" },
       { hu: "Pufferelés csúcsidőben",               en: "Buffering at peak hours" },
-      { hu: "Offline menő okosotthon-eszközök",     en: "Smart home devices going offline" },
+      { hu: "Offline, vagy akadozó okosotthon-eszközök",     en: "Smart home devices going offline" },
       { hu: "Wi-Fi, ami csak a router közelében működik rendesen", en: "Wi-Fi that only works properly near the router" },
     ],
     bottomStrong: { hu: "Kíváncsi vagy, mi okozza a te esetedben?", en: "Curious what's causing yours?" },
@@ -149,7 +149,7 @@ export const t = {
   carePlan: {
     kicker:   { hu: "Folyamatos támogatás",  en: "Ongoing support" },
     title:    { hu: "A hálózatod, karbantartva.", en: "Your network, maintained." },
-    body:     { hu: "A beállítást követően a MeshNest segít a hálózat stabilitásának fenntartásában rendszeres ellenőrzésekkel, gyors állapotvizsgálatokkal és praktikus segítséggel, ha valami problémás lesz.", en: "After setup, MeshNest helps keep your network stable with regular check-ins, quick health reviews, and practical support when something starts acting up." },
+    body:     { hu: "A beállítást követően a MeshNest segít a hálózat stabilitásának fenntartásában rendszeres ellenőrzésekkel, gyors állapotvizsgálatokkal és praktikus segítséggel, ha valami probléma adódik.", en: "After setup, MeshNest helps keep your network stable with regular check-ins, quick health reviews, and practical support when something starts acting up." },
     price:    { hu: "12 000 Ft-tól / hó",   en: "From 12,000 HUF / month" },
     cta:      { hu: "Karbantartás igénylése", en: "Request Care" },
   },
@@ -188,7 +188,7 @@ export const t = {
 
   footer: {
     tagline:      { hu: "Praktikus hálózattervezés és -beállítás otthonok és kisvállalkozások számára.", en: "Practical network design and setup for homes and small businesses." },
-    serviceArea:  { hu: "Szolgáltatási terület", en: "Service area" },
+    serviceArea:  { hu: "Földrajzi elhelyezkedés", en: "Service area" },
     areaValue:    { hu: "Törökbálint és környéke", en: "Törökbálint & surrounding area" },
     responseTime: { hu: "Válaszidő",             en: "Response time" },
     responseVal:  { hu: "Általában 24 órán belül", en: "Usually within 24 hours" },
