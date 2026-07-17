@@ -33,7 +33,7 @@ function TierCard({ name, price, rows, ctaLabel }: TierCardProps) {
         ))}
       </dl>
 
-      <Link href="/#contact" className={`btn btnPrimary ${styles.cardBtn}`}>
+      <Link href="/contact" className={`btn btnPrimary ${styles.cardBtn}`}>
         {ctaLabel}
       </Link>
     </article>
@@ -93,7 +93,7 @@ export default function Pricing() {
       </section>
 
       <section
-        className={`sectionTight sectionDivider ${styles.section}`}
+        className={`sectionTight sectionDivider ${styles.section} ${styles.sectionAlt}`}
         aria-label="Hourly rates"
       >
         <div
@@ -156,7 +156,7 @@ export default function Pricing() {
       </section>
 
       <section
-        className={`sectionLarge sectionDivider ${styles.section}`}
+        className={`sectionLarge sectionDivider ${styles.section} ${styles.sectionAlt}`}
         aria-label="Setup pricing"
       >
         <div
@@ -191,7 +191,7 @@ export default function Pricing() {
       </section>
 
       <section
-        className={`sectionLarge sectionDivider ${styles.section}`}
+        className={`sectionLarge sectionDivider ${styles.section} ${styles.sectionAlt}`}
         aria-label="Get in touch about pricing"
       >
         <div
@@ -201,7 +201,7 @@ export default function Pricing() {
           <div className={styles.closing}>
             <h2 className={styles.closingTitle}>{p.closing.title[lang]}</h2>
             <p className={styles.closingBody}>{p.closing.body[lang]}</p>
-            <Link href="/#contact" className={`btn btnPrimary ${styles.closingCta}`}>
+            <Link href="/contact" className={`btn btnPrimary ${styles.closingCta}`}>
               {p.closing.cta[lang]}
             </Link>
           </div>

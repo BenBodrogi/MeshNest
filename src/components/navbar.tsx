@@ -16,9 +16,9 @@ export default function Navbar() {
     { label: t.navbar.problems[lang],    href: "/#problems" },
     { label: t.navbar.approach[lang],    href: "/#approach" },
     { label: t.navbar.services[lang],    href: "/#services" },
-    { label: t.navbar.pricing[lang],     href: "/pricing" },
     { label: t.navbar.whyMeshNest[lang], href: "/#why-meshnest" },
-    { label: t.navbar.contact[lang],     href: "/#contact" },
+    { label: t.navbar.contact[lang],     href: "/contact" },
+    { label: t.navbar.pricing[lang],     href: "/pricing" },
   ];
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <Link href="/#contact" className="btn btnPrimary">
+          <Link href="/contact" className="btn btnPrimary">
             {t.navbar.cta[lang]}
           </Link>
 
@@ -146,7 +146,7 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/#contact"
+              href="/contact"
               className={`btn btnPrimary ${styles.mobileCta}`}
               onClick={closeMenu}
             >

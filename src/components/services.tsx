@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./services.module.css";
 import { useReveal } from "../app/hooks/useReveal";
 import { useLang } from "../context/LanguageContext";
@@ -36,9 +37,9 @@ function ServiceCard({ title, price, bullets, btnLabel, featured, featuredLabel 
         ))}
       </ul>
 
-      <a href="#contact" className={`btn btnPrimary ${styles.cardBtn}`}>
+      <Link href="/contact" className={`btn btnPrimary ${styles.cardBtn}`}>
         {btnLabel}
-      </a>
+      </Link>
     </article>
   );
 }

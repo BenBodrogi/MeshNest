@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./hero.module.css";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../lib/translations";
@@ -37,9 +38,9 @@ export default function Hero() {
           <p className={styles.subtitle}>{h.subtitle[lang]}</p>
 
           <div className={styles.actions}>
-            <a href="#contact" className="btn btnPrimary">
+            <Link href="/contact" className="btn btnPrimary">
               {h.ctaPrimary[lang]}
-            </a>
+            </Link>
             <a href="#services" className="btn btnSecondary">
               {h.ctaSecondary[lang]}
             </a>

@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+.sectionAlt {
+  background: var(--surface-alt);
+}
+
 .head {
   max-width: 760px;
   margin: 0 auto 44px;

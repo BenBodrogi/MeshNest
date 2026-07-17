@@ -62,7 +62,7 @@ export default function Contact() {
     <section
       id="contact"
       aria-label="Contact MeshNest"
-      className={`section sectionDivider ${styles.section}`}
+      className={`sectionLarge sectionDivider ${styles.section}`}
     >
       <div
         ref={ref}
@@ -71,7 +71,7 @@ export default function Contact() {
         <div className={styles.layout}>
           <div className={styles.intro}>
             <p className={styles.kicker}>{c.kicker[lang]}</p>
-            <h2 className={styles.title}>{c.title[lang]}</h2>
+            <h1 className={styles.title}>{c.title[lang]}</h1>
             <p className={styles.sub}>{c.sub[lang]}</p>
 
             <ul className={styles.points}>

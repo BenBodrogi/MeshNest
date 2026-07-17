@@ -37,9 +37,9 @@ export default function CarePlan() {
             {c.viewAllLabel[lang]}
           </Link>
 
-          <a href="#contact" className={`btn btnPrimary ${styles.cta}`}>
+          <Link href="/contact" className={`btn btnPrimary ${styles.cta}`}>
             {c.cta[lang]}
-          </a>
+          </Link>
         </div>
       </div>
     </section>
