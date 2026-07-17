@@ -1,67 +1,121 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./pricing.module.css";
 import { useReveal } from "../app/hooks/useReveal";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../lib/translations";
+import type { Lang } from "../lib/translations";
 
-type FactRow = { label: string; value: string };
+const MAINTENANCE_TIERS = [
+  { rate: 11000, recommendedHours: 2, minHours: 2, maxHours: 20 }, // Basic
+  { rate: 12000, recommendedHours: 4, minHours: 2, maxHours: 20 }, // Standard
+  { rate: 14000, recommendedHours: 8, minHours: 2, maxHours: 20 }, // Premium
+];
 
-type TierCardProps = {
+function formatPrice(amount: number, lang: Lang): string {
+  const formatted = new Intl.NumberFormat(lang === "hu" ? "hu-HU" : "en-US").format(amount);
+  return lang === "hu" ? `${formatted} Ft` : `${formatted} HUF`;
+}
+
+type MaintenanceCardProps = {
   name: string;
-  price: string;
-  rows: FactRow[];
-  ctaLabel: string;
+  rateDisplay: string;
+  response: string;
+  extras: string | null;
+  rate: number;
+  minHours: number;
+  maxHours: number;
+  recommendedHours: number;
+  lang: Lang;
+  labels: {
+    hoursLabel: string;
+    recommendedPrefix: string;
+    hourUnit: string;
+    monthlyEstimateLabel: string;
+    responseLabel: string;
+    extrasLabel: string;
+    cardBtn: string;
+  };
 };
 
-function TierCard({ name, price, rows, ctaLabel }: TierCardProps) {
+function MaintenanceCard({
+  name,
+  rateDisplay,
+  response,
+  extras,
+  rate,
+  minHours,
+  maxHours,
+  recommendedHours,
+  lang,
+  labels,
+}: MaintenanceCardProps) {
+  const [hours, setHours] = useState(recommendedHours);
+  const sliderId = `hours-${name.toLowerCase()}`;
+
   return (
     <article className={`card ${styles.card}`}>
       <div className={styles.cardHead}>
         <h3 className={styles.cardTitle}>{name}</h3>
-        <p className={styles.cardPrice}>{price}</p>
+        <p className={styles.cardPrice}>{rateDisplay}</p>
+      </div>
+
+      <div className={styles.sliderBlock}>
+        <div className={styles.sliderHead}>
+          <label htmlFor={sliderId} className={styles.sliderLabel}>
+            {labels.hoursLabel}
+          </label>
+          <span className={styles.sliderHours}>
+            {hours} {labels.hourUnit}
+          </span>
+        </div>
+
+        <input
+          id={sliderId}
+          type="range"
+          min={minHours}
+          max={maxHours}
+          step={1}
+          value={hours}
+          onChange={(e) => setHours(Number(e.target.value))}
+          className={styles.slider}
+        />
+
+        <p className={styles.sliderRecommended}>
+          {labels.recommendedPrefix} {recommendedHours} {labels.hourUnit}
+        </p>
+
+        <p className={styles.sliderEstimate}>
+          {labels.monthlyEstimateLabel}: <strong>{formatPrice(hours * rate, lang)}</strong>
+        </p>
       </div>
 
       <dl className={styles.factList}>
-        {rows.map((row) => (
-          <div key={row.label} className={styles.factRow}>
-            <dt className={styles.factLabel}>{row.label}</dt>
-            <dd className={styles.factValue}>{row.value}</dd>
+        <div className={styles.factRow}>
+          <dt className={styles.factLabel}>{labels.responseLabel}</dt>
+          <dd className={styles.factValue}>{response}</dd>
+        </div>
+        {extras ? (
+          <div className={styles.factRow}>
+            <dt className={styles.factLabel}>{labels.extrasLabel}</dt>
+            <dd className={styles.factValue}>{extras}</dd>
           </div>
-        ))}
+        ) : null}
       </dl>
 
       <Link href="/contact" className={`btn btnPrimary ${styles.cardBtn}`}>
-        {ctaLabel}
+        {labels.cardBtn}
       </Link>
-    </article>
-  );
-}
-
-type SegmentCardProps = {
-  name: string;
-  scope: string;
-  price: string;
-};
-
-function SegmentCard({ name, scope, price }: SegmentCardProps) {
-  return (
-    <article className={`card ${styles.card} ${styles.segmentCard}`}>
-      <div className={styles.cardHead}>
-        <h3 className={styles.cardTitle}>{name}</h3>
-        <p className={styles.cardPrice}>{price}</p>
-      </div>
-      <p className={styles.cardScope}>{scope}</p>
     </article>
   );
 }
 
 export default function Pricing() {
   const { ref: introRef, isVisible: introVisible } = useReveal();
-  const { ref: hourlyRef, isVisible: hourlyVisible } = useReveal();
-  const { ref: tiersRef, isVisible: tiersVisible } = useReveal();
-  const { ref: segmentsRef, isVisible: segmentsVisible } = useReveal();
+  const { ref: maintenanceRef, isVisible: maintenanceVisible } = useReveal();
+  const { ref: installationRef, isVisible: installationVisible } = useReveal();
   const { ref: closingRef, isVisible: closingVisible } = useReveal();
   const { lang } = useLang();
   const p = t.pricing;
@@ -83,105 +137,89 @@ export default function Pricing() {
       </section>
 
       <section
-        className={`sectionTight sectionDivider ${styles.section} ${styles.sectionAlt}`}
-        aria-label="Hourly rates"
+        className={`sectionLarge sectionDivider ${styles.section} ${styles.sectionAlt}`}
+        id="tiers"
+        aria-label="Maintenance"
       >
         <div
-          ref={hourlyRef as React.RefObject<HTMLDivElement>}
-          className={`container reveal ${hourlyVisible ? "revealVisible" : ""}`}
+          ref={maintenanceRef as React.RefObject<HTMLDivElement>}
+          className={`container reveal ${maintenanceVisible ? "revealVisible" : ""}`}
         >
           <div className={styles.head}>
-            <p className={styles.kicker}>{p.hourly.kicker[lang]}</p>
-            <h2 className={styles.title}>{p.hourly.title[lang]}</h2>
-            <p className={styles.sub}>{p.hourly.sub[lang]}</p>
+            <p className={styles.kicker}>{p.maintenance.kicker[lang]}</p>
+            <h2 className={styles.title}>{p.maintenance.title[lang]}</h2>
+            <p className={styles.sub}>{p.maintenance.sub[lang]}</p>
           </div>
 
-          <div className={styles.statRow}>
-            <div className={styles.stat}>
-              <p className={styles.statLabel}>{p.hourly.adhocLabel[lang]}</p>
-              <p className={styles.statValue}>{p.hourly.adhocValue[lang]}</p>
-            </div>
-            <div className={styles.stat}>
-              <p className={styles.statLabel}>{p.hourly.overageLabel[lang]}</p>
-              <p className={styles.statValue}>{p.hourly.overageValue[lang]}</p>
-            </div>
+          <div className={styles.grid}>
+            {p.maintenance.cards.map((card, index) => (
+              <MaintenanceCard
+                key={card.name.en}
+                name={card.name[lang]}
+                rateDisplay={card.rateDisplay[lang]}
+                response={card.response[lang]}
+                extras={card.extras ? card.extras[lang] : null}
+                rate={MAINTENANCE_TIERS[index].rate}
+                minHours={MAINTENANCE_TIERS[index].minHours}
+                maxHours={MAINTENANCE_TIERS[index].maxHours}
+                recommendedHours={MAINTENANCE_TIERS[index].recommendedHours}
+                lang={lang}
+                labels={{
+                  hoursLabel: p.maintenance.hoursLabel[lang],
+                  recommendedPrefix: p.maintenance.recommendedPrefix[lang],
+                  hourUnit: p.maintenance.hourUnit[lang],
+                  monthlyEstimateLabel: p.maintenance.monthlyEstimateLabel[lang],
+                  responseLabel: p.maintenance.responseLabel[lang],
+                  extrasLabel: p.maintenance.extrasLabel[lang],
+                  cardBtn: p.maintenance.cardBtn[lang],
+                }}
+              />
+            ))}
           </div>
+
+          <p className={styles.footnote}>{p.maintenance.minimumOverageNote[lang]}</p>
         </div>
       </section>
 
       <section
         className={`sectionLarge sectionDivider ${styles.section}`}
-        id="tiers"
-        aria-label="Maintenance tiers"
+        aria-label="Installation and setup"
       >
         <div
-          ref={tiersRef as React.RefObject<HTMLDivElement>}
-          className={`container reveal ${tiersVisible ? "revealVisible" : ""}`}
+          ref={installationRef as React.RefObject<HTMLDivElement>}
+          className={`container reveal ${installationVisible ? "revealVisible" : ""}`}
         >
           <div className={styles.head}>
-            <p className={styles.kicker}>{p.tiers.kicker[lang]}</p>
-            <h2 className={styles.title}>{p.tiers.title[lang]}</h2>
-            <p className={styles.sub}>{p.tiers.sub[lang]}</p>
+            <p className={styles.kicker}>{p.installation.kicker[lang]}</p>
+            <h2 className={styles.title}>{p.installation.title[lang]}</h2>
+            <p className={styles.sub}>{p.installation.sub[lang]}</p>
           </div>
 
-          <div className={styles.grid}>
-            {p.tiers.cards.map((card) => (
-              <TierCard
-                key={card.name.en}
-                name={card.name[lang]}
-                price={card.price[lang]}
-                ctaLabel={p.tiers.cardBtn[lang]}
-                rows={[
-                  { label: p.tiers.hoursLabel[lang], value: card.hours[lang] },
-                  { label: p.tiers.rateLabel[lang], value: card.rate[lang] },
-                  { label: p.tiers.responseLabel[lang], value: card.response[lang] },
-                  { label: p.tiers.onsiteLabel[lang], value: card.onsite[lang] },
-                ]}
-              />
-            ))}
+          <div className={styles.statRow}>
+            <div className={styles.stat}>
+              <p className={styles.statLabel}>{p.installation.rateLabel[lang]}</p>
+              <p className={styles.statValue}>{p.installation.rateDisplay[lang]}</p>
+            </div>
           </div>
 
-          <p className={styles.footnote}>{p.tiers.resetNote[lang]}</p>
+          <p className={styles.footnote}>{p.installation.note[lang]}</p>
+
+          <div className={styles.installCta}>
+            <Link href="/contact" className="btn btnPrimary">
+              {p.installation.cta[lang]}
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section
-        className={`sectionLarge sectionDivider ${styles.section} ${styles.sectionAlt}`}
-        aria-label="Setup pricing"
-      >
-        <div
-          ref={segmentsRef as React.RefObject<HTMLDivElement>}
-          className={`container reveal ${segmentsVisible ? "revealVisible" : ""}`}
-        >
-          <div className={styles.head}>
-            <p className={styles.kicker}>{p.segments.kicker[lang]}</p>
-            <h2 className={styles.title}>{p.segments.title[lang]}</h2>
-            <p className={styles.sub}>{p.segments.sub[lang]}</p>
-          </div>
-
-          <div className={styles.grid}>
-            {p.segments.cards.map((card) => (
-              <SegmentCard
-                key={card.name.en}
-                name={card.name[lang]}
-                scope={card.scope[lang]}
-                price={card.price[lang]}
-              />
-            ))}
-          </div>
-
-          <p className={styles.footnote}>{p.segments.independenceNote[lang]}</p>
-        </div>
-      </section>
-
-      <section className={`sectionTight ${styles.section}`} aria-label="Hardware policy">
+      <section className={`sectionTight ${styles.section} ${styles.sectionAlt}`} aria-label="Hardware policy">
         <div className="container">
           <p className={styles.hardwareNote}>{p.hardwareNote[lang]}</p>
         </div>
       </section>
 
       <section
-        className={`sectionLarge sectionDivider ${styles.section} ${styles.sectionAlt}`}
+        className={`sectionLarge sectionDivider ${styles.section}`}
         aria-label="Get in touch about pricing"
       >
         <div

@@ -10,7 +10,7 @@ export default function CarePlan() {
   const { ref, isVisible } = useReveal();
   const { lang } = useLang();
   const c = t.carePlan;
-  const tiers = t.pricing.tiers.cards;
+  const tiers = t.pricing.maintenance.cards;
 
   return (
     <section className={`section sectionDivider ${styles.section}`} id="care-plan" aria-label="MeshNest care plan">
@@ -28,7 +28,7 @@ export default function CarePlan() {
             {tiers.map((tier) => (
               <div key={tier.name.en} className={styles.tierItem}>
                 <span className={styles.tierName}>{tier.name[lang]}</span>
-                <span className={styles.tierPrice}>{tier.price[lang]}</span>
+                <span className={styles.tierPrice}>{tier.rateDisplay[lang]}</span>
               </div>
             ))}
           </div>
