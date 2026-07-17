@@ -38,8 +38,26 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const timer = setTimeout(() => {
+      document.querySelector(hash)?.scrollIntoView({ behavior: "instant", block: "start" });
+    }, 80);
+    return () => clearTimeout(timer);
+  }, []);
+
   function closeMenu() {
     setMenuOpen(false);
+  }
+
+  function scrollToHash(href: string) {
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+    const hash = href.slice(hashIndex);
+    setTimeout(() => {
+      document.querySelector(hash)?.scrollIntoView({ behavior: "instant", block: "start" });
+    }, 80);
   }
 
   return (
@@ -66,7 +84,13 @@ export default function Navbar() {
 
         <div className={styles.links}>
           {NAV_ITEMS.map((item) => (
-            <Link key={item.href} href={item.href} className={styles.navLink}>
+            <Link
+              key={item.href}
+              href={item.href}
+              scroll={!item.href.includes("#")}
+              onClick={() => scrollToHash(item.href)}
+              className={styles.navLink}
+            >
               {item.label}
             </Link>
           ))}
@@ -118,8 +142,12 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
+                scroll={!item.href.includes("#")}
                 className={styles.mobileNavLink}
-                onClick={closeMenu}
+                onClick={() => {
+                  closeMenu();
+                  scrollToHash(item.href);
+                }}
               >
                 {item.label}
               </Link>

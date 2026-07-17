@@ -151,7 +151,7 @@ export const t = {
     kicker:       { hu: "Folyamatos támogatás",  en: "Ongoing support" },
     title:        { hu: "A hálózatod, karbantartva.", en: "Your network, maintained." },
     body:         { hu: "A beállítást követően a MeshNest segít a hálózat stabilitásának fenntartásában rendszeres ellenőrzésekkel, gyors állapotvizsgálatokkal és praktikus segítséggel, ha valami probléma adódik.", en: "After setup, MeshNest helps keep your network stable with regular check-ins, quick health reviews, and practical support when something starts acting up." },
-    viewAllLabel: { hu: "Teljes árlista megtekintése", en: "See Full Pricing" },
+    viewAllLabel: { hu: "Árlista", en: "Price List" },
     cta:          { hu: "Karbantartás igénylése", en: "Request Care" },
   },
 

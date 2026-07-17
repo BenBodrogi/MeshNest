@@ -33,12 +33,12 @@ export default function CarePlan() {
             ))}
           </div>
 
-          <Link href="/pricing#tiers" scroll={false} className={styles.viewAllLink}>
-            {c.viewAllLabel[lang]}
-          </Link>
-
           <Link href="/contact" className={`btn btnPrimary ${styles.cta}`}>
             {c.cta[lang]}
+          </Link>
+
+          <Link href="/pricing#tiers" scroll={false} className={styles.viewAllLink}>
+            {c.viewAllLabel[lang]}
           </Link>
         </div>
       </div>

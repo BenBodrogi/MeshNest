@@ -112,6 +112,7 @@ a:hover {
 .section {
   position: relative;
   padding: var(--section-y) 0;
+  scroll-margin-top: 96px;
 }
 
 .section h2 {
@@ -126,11 +127,13 @@ a:hover {
 .sectionLarge {
   padding-top: var(--section-y-lg);
   padding-bottom: var(--section-y-lg);
+  scroll-margin-top: 96px;
 }
 
 .sectionTight {
   padding-top: var(--section-y-sm);
   padding-bottom: var(--section-y-sm);
+  scroll-margin-top: 96px;
 }
 
 .section::before,

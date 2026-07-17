@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import styles from "./pricing.module.css";
 import { useReveal } from "../app/hooks/useReveal";
@@ -66,15 +65,6 @@ export default function Pricing() {
   const { ref: closingRef, isVisible: closingVisible } = useReveal();
   const { lang } = useLang();
   const p = t.pricing;
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) return;
-    const timer = setTimeout(() => {
-      document.querySelector(hash)?.scrollIntoView({ behavior: "instant", block: "start" });
-    }, 80);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <>
