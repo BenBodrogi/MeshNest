@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./footer.module.css";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../lib/translations";
@@ -15,7 +16,7 @@ export default function Footer() {
 
         <div className={styles.top}>
           <div className={styles.brandBlock}>
-            <a href="#top" className={styles.brand} aria-label="MeshNest home">
+            <Link href="/#top" className={styles.brand} aria-label="MeshNest home">
               <Image
                 src="/logo.svg"
                 alt=""
@@ -25,7 +26,7 @@ export default function Footer() {
                 aria-hidden="true"
               />
               <span className={styles.brandText}>MeshNest</span>
-            </a>
+            </Link>
 
             <p className={styles.tagline}>{f.tagline[lang]}</p>
           </div>

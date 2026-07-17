@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useReveal } from "../app/hooks/useReveal";
 import styles from "./care-plan.module.css";
 import { useLang } from "../context/LanguageContext";
@@ -9,6 +10,7 @@ export default function CarePlan() {
   const { ref, isVisible } = useReveal();
   const { lang } = useLang();
   const c = t.carePlan;
+  const tiers = t.pricing.tiers.cards;
 
   return (
     <section className={`section sectionDivider ${styles.section}`} id="care-plan" aria-label="MeshNest care plan">
@@ -22,7 +24,18 @@ export default function CarePlan() {
 
           <p className={styles.body}>{c.body[lang]}</p>
 
-          <p className={styles.price}>{c.price[lang]}</p>
+          <div className={styles.tierRow}>
+            {tiers.map((tier) => (
+              <div key={tier.name.en} className={styles.tierItem}>
+                <span className={styles.tierName}>{tier.name[lang]}</span>
+                <span className={styles.tierPrice}>{tier.price[lang]}</span>
+              </div>
+            ))}
+          </div>
+
+          <Link href="/pricing#tiers" scroll={false} className={styles.viewAllLink}>
+            {c.viewAllLabel[lang]}
+          </Link>
 
           <a href="#contact" className={`btn btnPrimary ${styles.cta}`}>
             {c.cta[lang]}

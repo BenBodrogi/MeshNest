@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./navbar.module.css";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../lib/translations";
@@ -12,11 +13,12 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const NAV_ITEMS = [
-    { label: t.navbar.problems[lang],    href: "#problems" },
-    { label: t.navbar.approach[lang],    href: "#approach" },
-    { label: t.navbar.services[lang],    href: "#services" },
-    { label: t.navbar.whyMeshNest[lang], href: "#why-meshnest" },
-    { label: t.navbar.contact[lang],     href: "#contact" },
+    { label: t.navbar.problems[lang],    href: "/#problems" },
+    { label: t.navbar.approach[lang],    href: "/#approach" },
+    { label: t.navbar.services[lang],    href: "/#services" },
+    { label: t.navbar.pricing[lang],     href: "/pricing" },
+    { label: t.navbar.whyMeshNest[lang], href: "/#why-meshnest" },
+    { label: t.navbar.contact[lang],     href: "/#contact" },
   ];
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export default function Navbar() {
       aria-label="Primary navigation"
     >
       <div className={`container ${styles.inner}`}>
-        <a href="#top" className={styles.brand} aria-label="MeshNest home">
+        <Link href="/#top" className={styles.brand} aria-label="MeshNest home">
           <Image
             src="/logo.svg"
             alt=""
@@ -60,13 +62,13 @@ export default function Navbar() {
             <span className={styles.brandText}>MeshNest</span>
             <span className={styles.brandSub}>by Virdana</span>
           </span>
-        </a>
+        </Link>
 
         <div className={styles.links}>
           {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href} className={styles.navLink}>
+            <Link key={item.href} href={item.href} className={styles.navLink}>
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -91,9 +93,9 @@ export default function Navbar() {
             </button>
           </div>
 
-          <a href="#contact" className="btn btnPrimary">
+          <Link href="/#contact" className="btn btnPrimary">
             {t.navbar.cta[lang]}
-          </a>
+          </Link>
 
           <button
             type="button"
@@ -113,14 +115,14 @@ export default function Navbar() {
         <div className="container">
           <div className={styles.mobileNav}>
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className={styles.mobileNavLink}
                 onClick={closeMenu}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
 
             <div className={styles.mobileLangToggle} aria-label="Language selector">
@@ -143,13 +145,13 @@ export default function Navbar() {
               </button>
             </div>
 
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className={`btn btnPrimary ${styles.mobileCta}`}
               onClick={closeMenu}
             >
               {t.navbar.cta[lang]}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

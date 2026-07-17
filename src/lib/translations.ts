@@ -5,6 +5,7 @@ export const t = {
     problems:    { hu: "Problémák",         en: "Problems" },
     approach:    { hu: "Hogyan dolgozunk",   en: "Approach" },
     services:    { hu: "Szolgáltatások",    en: "Services" },
+    pricing:     { hu: "Árak",              en: "Pricing" },
     whyMeshNest: { hu: "Miért a MeshNest",    en: "Why MeshNest" },
     contact:     { hu: "Kapcsolat",         en: "Contact" },
     cta:         { hu: "Hálózat ellenőrzése", en: "Book a Health Check" },
@@ -147,11 +148,99 @@ export const t = {
   },
 
   carePlan: {
-    kicker:   { hu: "Folyamatos támogatás",  en: "Ongoing support" },
-    title:    { hu: "A hálózatod, karbantartva.", en: "Your network, maintained." },
-    body:     { hu: "A beállítást követően a MeshNest segít a hálózat stabilitásának fenntartásában rendszeres ellenőrzésekkel, gyors állapotvizsgálatokkal és praktikus segítséggel, ha valami probléma adódik.", en: "After setup, MeshNest helps keep your network stable with regular check-ins, quick health reviews, and practical support when something starts acting up." },
-    price:    { hu: "12 000 Ft-tól / hó",   en: "From 12,000 HUF / month" },
-    cta:      { hu: "Karbantartás igénylése", en: "Request Care" },
+    kicker:       { hu: "Folyamatos támogatás",  en: "Ongoing support" },
+    title:        { hu: "A hálózatod, karbantartva.", en: "Your network, maintained." },
+    body:         { hu: "A beállítást követően a MeshNest segít a hálózat stabilitásának fenntartásában rendszeres ellenőrzésekkel, gyors állapotvizsgálatokkal és praktikus segítséggel, ha valami probléma adódik.", en: "After setup, MeshNest helps keep your network stable with regular check-ins, quick health reviews, and practical support when something starts acting up." },
+    viewAllLabel: { hu: "Teljes árlista megtekintése", en: "See Full Pricing" },
+    cta:          { hu: "Karbantartás igénylése", en: "Request Care" },
+  },
+
+  pricing: {
+    hero: {
+      kicker: { hu: "Árak", en: "Pricing" },
+      title:  { hu: "Egy díj minden rendszerhez, amire szükséged van.", en: "One rate for every system you need." },
+      sub:    { hu: "Wi-Fi, hálózat, nyomtatók, biztonsági mentés, email — mindegyiket ugyanúgy kezeljük, legyen szó otthonról vagy egy kisebb irodáról, az árazás pedig már az első beszélgetéskor egyértelmű.", en: "Wi-Fi, networks, printers, backups, email — handled the same way whether it's your home or a small office, with pricing that's clear from the first conversation." },
+    },
+
+    hourly: {
+      kicker:       { hu: "Óradíjak", en: "Hourly rates" },
+      title:        { hu: "Egyetlen óradíj, bármilyen munkáról legyen szó.", en: "One flat rate for every kind of work." },
+      sub:          { hu: "Hálózati, szerver- és NAS-, nyomtató- és email-munka egyaránt ugyanazon az óradíjon fut — egyetlen egyszerű szám, mindig.", en: "Network, server and NAS, printer, and email work are billed at the same hourly rate — one simple number, always." },
+      adhocLabel:   { hu: "Eseti (szerződés nélkül)", en: "Ad-hoc (no contract)" },
+      adhocValue:   { hu: "14 000 Ft / óra", en: "14,000 HUF / hour" },
+      overageLabel: { hu: "Túllépési díj (csomagos ügyfeleknek, a benne foglalt órákon túl)", en: "Overage (tier clients, past included hours)" },
+      overageValue: { hu: "17 000 Ft / óra", en: "17,000 HUF / hour" },
+    },
+
+    tiers: {
+      kicker:        { hu: "Havi csomagok", en: "Monthly plans" },
+      title:         { hu: "Három szint, attól függően, mennyi támogatásra van szükséged.", en: "Three tiers, sized to how much support you need." },
+      sub:           { hu: "Minden csomag ugyanazt fedi le — Wi-Fi és hálózat, nyomtatók, biztonsági mentés és email —, csak az órák száma, a válaszidő és a kiszállás gyorsasága különbözik köztük.", en: "Every tier covers the same ground — Wi-Fi and network, printers, backups, and email — the difference is hours, response time, and how quickly someone shows up." },
+      hoursLabel:    { hu: "Óra / hó", en: "Hours / month" },
+      rateLabel:     { hu: "Tényleges óradíj", en: "Effective rate" },
+      responseLabel: { hu: "Válaszidő", en: "Response time" },
+      onsiteLabel:   { hu: "Helyszíni kiszállás", en: "On-site visits" },
+      resetNote:     { hu: "Minden csomag óraszáma havonta frissül, a fel nem használt órák nem gyűlnek át.", en: "Each tier's hours reset fresh every month." },
+      cardBtn:       { hu: "Érdeklődj a csomagról", en: "Ask About This Tier" },
+      cards: [
+        {
+          name:     { hu: "Basic", en: "Basic" },
+          hours:    { hu: "2 óra", en: "2 hours" },
+          rate:     { hu: "13 000 Ft/óra", en: "13,000 HUF/hour" },
+          price:    { hu: "26 000 Ft/hó", en: "26,000 HUF/month" },
+          response: { hu: "48 órán belül", en: "Within 48 hours" },
+          onsite:   { hu: "Helyszíni kiszállás túllépési díjon, ha szükséges", en: "On-site visits billed at the overage rate if needed" },
+        },
+        {
+          name:     { hu: "Standard", en: "Standard" },
+          hours:    { hu: "4 óra", en: "4 hours" },
+          rate:     { hu: "12 000 Ft/óra", en: "12,000 HUF/hour" },
+          price:    { hu: "48 000 Ft/hó", en: "48,000 HUF/month" },
+          response: { hu: "24 órán belül", en: "Within 24 hours" },
+          onsite:   { hu: "Negyedévenként egy kiszállás a csomagban", en: "1 on-site visit included per quarter" },
+        },
+        {
+          name:     { hu: "Priority", en: "Priority" },
+          hours:    { hu: "8 óra", en: "8 hours" },
+          rate:     { hu: "11 000 Ft/óra", en: "11,000 HUF/hour" },
+          price:    { hu: "88 000 Ft/hó", en: "88,000 HUF/month" },
+          response: { hu: "Aznap, munkaidőben", en: "Same-day, during business hours" },
+          onsite:   { hu: "Kiszállás szükség szerint", en: "On-site visits as needed" },
+        },
+      ],
+    },
+
+    segments: {
+      kicker:           { hu: "Egyszeri telepítés", en: "One-time setup" },
+      title:            { hu: "Egyszeri beüzemelés, a feladat nagyságától függően.", en: "One-time setup, priced by scope." },
+      sub:              { hu: "Csak munkadíj — a pontos terjedelmet a helyszín megismerése után pontosítjuk.", en: "Labor only — the exact scope gets refined once we see your space." },
+      independenceNote: { hu: "A beüzemelés terjedelme és a havi csomag két külön döntés — egy egyéni vállalkozó választhatja a Priority csomagot, egy tízfős iroda pedig a Basic-et is. Bármilyen kombináció lehetséges.", en: "Setup scope and your monthly plan are separate choices — a freelancer can pick Priority, and a ten-person office can pick Basic. Combine whichever fits." },
+      cards: [
+        {
+          name:  { hu: "Egyéni vállalkozó és home office", en: "Freelancer & Home Office" },
+          scope: { hu: "Hálózat beüzemelése, plusz egy nyomtató vagy email fiók beállítása.", en: "Network setup, plus one printer or email account." },
+          price: { hu: "30 000 Ft-tól", en: "From 30,000 HUF" },
+        },
+        {
+          name:  { hu: "1–2 fős csapat", en: "1–2 Person Team" },
+          scope: { hu: "Hálózat beüzemelése, megosztott NAS vagy nyomtató, valamint email- és domainbeállítás.", en: "Network setup, a shared NAS or printer, and email and domain setup." },
+          price: { hu: "55 000 Ft-tól", en: "From 55,000 HUF" },
+        },
+        {
+          name:  { hu: "Kisvállalkozás (kb. 10 fő)", en: "Small Business (~10 People)" },
+          scope: { hu: "Teljes hálózat kiépítése, NAS, nyomtatók és email-migráció.", en: "Full network setup, NAS, printers, and email migration." },
+          price: { hu: "130 000 Ft-tól", en: "From 130,000 HUF" },
+        },
+      ],
+    },
+
+    hardwareNote: { hu: "A beüzemelési díjak csak a munkadíjat tartalmazzák — a hardvert külön tételként számlázzuk, a részleteket a feladat átbeszélésekor egyeztetjük.", en: "Setup prices cover labor only — hardware is quoted and billed separately, so ask for details when we scope the work." },
+
+    closing: {
+      title: { hu: "Készen állsz, hogy átbeszéljük az árakat?", en: "Ready to talk pricing?" },
+      body:  { hu: "Írd meg, mire van szükséged, és hamarosan kapsz egy egyértelmű tervet és egy világos árajánlatot.", en: "Get in touch with what's going on, and you'll hear back with a plan and a straightforward number." },
+      cta:   { hu: "Kapcsolatfelvétel", en: "Get in Touch" },
+    },
   },
 
   contact: {
