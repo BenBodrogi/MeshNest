@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./navbar.module.css";
@@ -11,6 +11,8 @@ export default function Navbar() {
   const { lang, setLang } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [menuHeight, setMenuHeight] = useState(0);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
 
   const NAV_ITEMS = [
     { label: t.navbar.problems[lang],    href: "/#problems" },
@@ -46,6 +48,12 @@ export default function Navbar() {
     }, 80);
     return () => clearTimeout(timer);
   }, []);
+
+  useLayoutEffect(() => {
+    if (menuOpen && mobileNavRef.current) {
+      setMenuHeight(mobileNavRef.current.scrollHeight);
+    }
+  }, [menuOpen]);
 
   function closeMenu() {
     setMenuOpen(false);
@@ -135,9 +143,12 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}>
+      <div
+        className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}
+        style={menuOpen ? { maxHeight: `${menuHeight + 32}px` } : undefined}
+      >
         <div className="container">
-          <div className={styles.mobileNav}>
+          <div className={styles.mobileNav} ref={mobileNavRef}>
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
