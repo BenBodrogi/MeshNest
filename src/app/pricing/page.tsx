@@ -4,14 +4,14 @@ import Pricing from "../../components/pricing";
 import Footer from "../../components/footer";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Árak",
   description:
-    "One flat hourly rate, monthly maintenance tiers, and setup pricing for home Wi-Fi and small business IT support in Törökbálint.",
+    "Óradíjas karbantartási csomagok és egyszeri beüzemelés árazása otthoni Wi-Fi-hez és kisvállalkozási informatikai támogatáshoz Törökbálinton.",
   openGraph: {
-    title: "MeshNest Pricing",
+    title: "MeshNest Árak",
     description:
-      "One flat hourly rate, monthly maintenance tiers, and setup pricing for home Wi-Fi and small business IT support.",
-    url: "https://mesh-nest.vercel.app/pricing",
+      "Óradíjas karbantartási csomagok és egyszeri beüzemelés árazása otthoni Wi-Fi-hez és kisvállalkozási informatikai támogatáshoz.",
+    url: "https://meshnest.co/pricing",
   },
 };
 

@@ -98,6 +98,14 @@
   transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 
+/* Native <option> popups render on a browser-controlled light background
+   regardless of site theme, so the dark-mode --foreground text color
+   (near-white) becomes unreadable against it unless set explicitly here. */
+.field select option {
+  color: #1a1714;
+  background: #ffffff;
+}
+
 .field input::placeholder,
 .field textarea::placeholder {
   color: var(--muted);

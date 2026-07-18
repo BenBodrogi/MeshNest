@@ -62,7 +62,7 @@
 }
 
 .viewAllLink {
-  display: inline-block;
+  display: block;
   margin: 16px 0 0;
   font-size: 14px;
   text-decoration: underline;

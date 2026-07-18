@@ -44,7 +44,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copy}>
-            © {new Date().getFullYear()} MeshNest —{" "}
+            © {new Date().getFullYear()} MeshNest,{" "}
             {lang === "hu" ? "üzemelteti: " : "powered by "}
             <a href="https://virdana.dev" target="_blank" rel="noopener noreferrer" className={styles.virdanaLink}>
               The Virdana Group

@@ -4,14 +4,14 @@ import Contact from "../../components/contact";
 import Footer from "../../components/footer";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Kapcsolat",
   description:
-    "Get in touch with MeshNest for a Wi-Fi health check, network upgrade, or small business IT support in Törökbálint.",
+    "Vedd fel a kapcsolatot a MeshNesttel Wi-Fi ellenőrzés, hálózati fejlesztés vagy kisvállalkozási informatikai támogatás ügyében Törökbálinton.",
   openGraph: {
-    title: "Contact MeshNest",
+    title: "Kapcsolat – MeshNest",
     description:
-      "Get in touch for a Wi-Fi health check, network upgrade, or small business IT support.",
-    url: "https://mesh-nest.vercel.app/contact",
+      "Vedd fel a kapcsolatot Wi-Fi ellenőrzés, hálózati fejlesztés vagy kisvállalkozási informatikai támogatás ügyében.",
+    url: "https://meshnest.co/contact",
   },
 };
 

@@ -19,6 +19,27 @@ function formatPrice(amount: number, lang: Lang): string {
   return lang === "hu" ? `${formatted} Ft` : `${formatted} HUF`;
 }
 
+function MaintenanceIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M6 8a6 6 0 0 1 11-3" />
+      <path d="M17 3v4h-4" />
+      <path d="M18 16a6 6 0 0 1-11 3" />
+      <path d="M7 21v-4h4" />
+    </svg>
+  );
+}
+
+function InstallationIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 3v5M15 3v5" />
+      <rect x="6" y="8" width="12" height="7" rx="2" />
+      <path d="M12 15v3a3 3 0 0 1-3 3H7" />
+    </svg>
+  );
+}
+
 type MaintenanceCardProps = {
   name: string;
   rateDisplay: string;
@@ -146,6 +167,9 @@ export default function Pricing() {
           className={`container reveal ${maintenanceVisible ? "revealVisible" : ""}`}
         >
           <div className={styles.head}>
+            <div className={styles.sectionIcon}>
+              <MaintenanceIcon />
+            </div>
             <p className={styles.kicker}>{p.maintenance.kicker[lang]}</p>
             <h2 className={styles.title}>{p.maintenance.title[lang]}</h2>
             <p className={styles.sub}>{p.maintenance.sub[lang]}</p>
@@ -190,6 +214,9 @@ export default function Pricing() {
           className={`container reveal ${installationVisible ? "revealVisible" : ""}`}
         >
           <div className={styles.head}>
+            <div className={styles.sectionIcon}>
+              <InstallationIcon />
+            </div>
             <p className={styles.kicker}>{p.installation.kicker[lang]}</p>
             <h2 className={styles.title}>{p.installation.title[lang]}</h2>
             <p className={styles.sub}>{p.installation.sub[lang]}</p>
@@ -212,14 +239,8 @@ export default function Pricing() {
         </div>
       </section>
 
-      <section className={`sectionTight ${styles.section} ${styles.sectionAlt}`} aria-label="Hardware policy">
-        <div className="container">
-          <p className={styles.hardwareNote}>{p.hardwareNote[lang]}</p>
-        </div>
-      </section>
-
       <section
-        className={`sectionLarge sectionDivider ${styles.section}`}
+        className={`sectionLarge sectionDivider ${styles.section} ${styles.sectionAlt}`}
         aria-label="Get in touch about pricing"
       >
         <div
@@ -232,6 +253,7 @@ export default function Pricing() {
             <Link href="/contact" className={`btn btnPrimary ${styles.closingCta}`}>
               {p.closing.cta[lang]}
             </Link>
+            <p className={styles.hardwareNote}>{p.hardwareNote[lang]}</p>
           </div>
         </div>
       </section>

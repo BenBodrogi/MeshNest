@@ -16,52 +16,54 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const baseUrl = "https://mesh-nest.vercel.app";
+const baseUrl = "https://meshnest.co";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
 
   title: {
-    default: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
+    default: "MeshNest – Lassú Wi-Fi és Lefedettségi Hiányok Megoldása",
     template: "%s | MeshNest",
   },
 
   description:
-    "Professional home & small business network audits. Eliminate dead zones, stabilize speeds, and get a tailored upgrade plan. Book today.",
+    "Professzionális otthoni és kisvállalati hálózati auditok. Szüntesd meg a lefedettségi hiányokat, stabilizáld a sebességet, és kapj személyre szabott fejlesztési tervet. Foglalj még ma.",
 
   keywords: [
-    "home network audit",
+    "wifi hibaelhárítás",
+    "otthoni hálózati audit",
+    "lefedettségi hiányok",
+    "hálózati karbantartás",
+    "kisvállalkozási hálózat",
     "wifi optimization",
-    "network troubleshooting",
-    "mesh wifi setup",
-    "small business networking",
+    "home network audit",
   ],
 
   authors: [{ name: "MeshNest" }],
 
   openGraph: {
-    title: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
+    title: "MeshNest – Lassú Wi-Fi és Lefedettségi Hiányok Megoldása",
     description:
-      "Eliminate dead zones, stabilize speeds, and get a tailored upgrade plan for your home or small business. Book a MeshNest audit today.",
+      "Szüntesd meg a lefedettségi hiányokat, stabilizáld a sebességet, és kapj személyre szabott fejlesztési tervet otthonodhoz vagy kisvállalkozásodhoz. Foglalj MeshNest auditot még ma.",
     url: baseUrl,
     siteName: "MeshNest",
-    locale: "en_US",
+    locale: "hu_HU",
     type: "website",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
+        alt: "MeshNest – Lassú Wi-Fi és Lefedettségi Hiányok Megoldása",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "MeshNest Network Audits – Fix Slow Wi-Fi & Dead Zones",
+    title: "MeshNest – Lassú Wi-Fi és Lefedettségi Hiányok Megoldása",
     description:
-      "Professional network audits to fix slow Wi-Fi, dead zones, and unstable connections. Book today.",
+      "Professzionális hálózati auditok lassú Wi-Fi, lefedettségi hiányok és instabil kapcsolat javítására. Foglalj még ma.",
     images: ["/og-image.png"],
   },
 
@@ -89,22 +91,22 @@ export default function RootLayout({
               name: "MeshNest",
               url: baseUrl,
               description:
-                "Professional home and small business network audits. Fix slow Wi-Fi, dead zones, and unstable connections with a tailored plan.",
+                "Professzionális otthoni és kisvállalati hálózati auditok. Lassú Wi-Fi, lefedettségi hiányok és instabil kapcsolat javítása személyre szabott tervvel.",
               areaServed: {
                 "@type": "Country",
-                name: "Hungary",
+                name: "Magyarország",
               },
               serviceType: [
-                "Home network audit",
-                "Wi-Fi optimization",
-                "Mesh Wi-Fi setup",
-                "Network troubleshooting",
+                "Otthoni hálózati audit",
+                "Wi-Fi optimalizálás",
+                "Mesh Wi-Fi beállítás",
+                "Hálózati hibaelhárítás",
               ],
               contactPoint: [
                 {
                   "@type": "ContactPoint",
                   contactType: "customer support",
-                  email: "hello@mesh-nest.vercel.app",
+                  email: "info@virdana.dev",
                   availableLanguage: ["English", "Hungarian"],
                 },
               ],

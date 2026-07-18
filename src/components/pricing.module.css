@@ -17,6 +17,19 @@
   text-align: center;
 }
 
+.sectionIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 138, 120, 0.22);
+  background: rgba(27, 138, 120, 0.08);
+  color: var(--accent);
+}
+
 .kicker {
   font-size: 13px;
   letter-spacing: 0.6px;
@@ -116,8 +129,10 @@
 
 .cardPrice {
   margin: 0;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 700;
+  letter-spacing: -0.2px;
+  font-variant-numeric: tabular-nums;
   color: var(--accent);
 }
 
@@ -253,11 +268,9 @@
 }
 
 .hardwareNote {
-  margin: 0 auto;
-  max-width: 680px;
-  text-align: center;
+  margin: 24px auto 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
