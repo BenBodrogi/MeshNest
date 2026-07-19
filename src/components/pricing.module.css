@@ -169,6 +169,41 @@
   text-align: right;
 }
 
+.includesBlock {
+  margin: 0 0 22px;
+}
+
+.includesLabel {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.includesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.includesItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  margin-top: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+
 .cardBtn {
   margin-top: auto;
   width: 100%;

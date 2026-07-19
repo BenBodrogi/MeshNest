@@ -44,7 +44,7 @@ type MaintenanceCardProps = {
   name: string;
   rateDisplay: string;
   response: string;
-  extras: string | null;
+  includes: string[];
   rate: number;
   minHours: number;
   maxHours: number;
@@ -56,7 +56,7 @@ type MaintenanceCardProps = {
     hourUnit: string;
     monthlyEstimateLabel: string;
     responseLabel: string;
-    extrasLabel: string;
+    includesLabel: string;
     cardBtn: string;
   };
 };
@@ -65,7 +65,7 @@ function MaintenanceCard({
   name,
   rateDisplay,
   response,
-  extras,
+  includes,
   rate,
   minHours,
   maxHours,
@@ -118,13 +118,19 @@ function MaintenanceCard({
           <dt className={styles.factLabel}>{labels.responseLabel}</dt>
           <dd className={styles.factValue}>{response}</dd>
         </div>
-        {extras ? (
-          <div className={styles.factRow}>
-            <dt className={styles.factLabel}>{labels.extrasLabel}</dt>
-            <dd className={styles.factValue}>{extras}</dd>
-          </div>
-        ) : null}
       </dl>
+
+      <div className={styles.includesBlock}>
+        <p className={styles.includesLabel}>{labels.includesLabel}</p>
+        <ul className={styles.includesList}>
+          {includes.map((item) => (
+            <li key={item} className={styles.includesItem}>
+              <span className={styles.dot} aria-hidden="true" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <Link href="/contact" className={`btn btnPrimary ${styles.cardBtn}`}>
         {labels.cardBtn}
@@ -182,7 +188,7 @@ export default function Pricing() {
                 name={card.name[lang]}
                 rateDisplay={card.rateDisplay[lang]}
                 response={card.response[lang]}
-                extras={card.extras ? card.extras[lang] : null}
+                includes={card.includes.map((item) => item[lang])}
                 rate={MAINTENANCE_TIERS[index].rate}
                 minHours={MAINTENANCE_TIERS[index].minHours}
                 maxHours={MAINTENANCE_TIERS[index].maxHours}
@@ -194,7 +200,7 @@ export default function Pricing() {
                   hourUnit: p.maintenance.hourUnit[lang],
                   monthlyEstimateLabel: p.maintenance.monthlyEstimateLabel[lang],
                   responseLabel: p.maintenance.responseLabel[lang],
-                  extrasLabel: p.maintenance.extrasLabel[lang],
+                  includesLabel: p.maintenance.includesLabel[lang],
                   cardBtn: p.maintenance.cardBtn[lang],
                 }}
               />

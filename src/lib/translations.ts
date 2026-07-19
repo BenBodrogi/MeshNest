@@ -165,13 +165,13 @@ export const t = {
     maintenance: {
       kicker:               { hu: "Karbantartás", en: "Maintenance" },
       title:                { hu: "Válassz egy csomagot, aztán az óraszámot.", en: "Pick a tier, then choose your hours." },
-      sub:                  { hu: "A Basic, a Standard és a Premium ugyanazt fedi le (Wi-Fi és hálózat, nyomtatók, biztonsági mentés és email). Az óradíj, a válaszidő és az órákon felüli extrák térnek el csomagonként.", en: "Basic, Standard, and Premium all cover the same ground (Wi-Fi and network, printers, backups, and email). What changes is the hourly rate, how fast someone responds, and what's included beyond the hours themselves." },
+      sub:                  { hu: "A Basic, a Standard és a Premium ugyanazt fedi le (Wi-Fi és hálózat, nyomtatók, biztonsági mentés és email). Az óradíj, a válaszidő és a havi helyszíni ellenőrzés mélysége térnek el csomagonként.", en: "Basic, Standard, and Premium all cover the same ground (Wi-Fi and network, printers, backups, and email). What changes is the hourly rate, how fast someone responds, and how thorough the monthly on-site check is." },
       hoursLabel:           { hu: "Óra / hó", en: "Hours / month" },
       recommendedPrefix:    { hu: "Ajánlott:", en: "Recommended:" },
       hourUnit:             { hu: "óra/hó", en: "hours/mo" },
       monthlyEstimateLabel: { hu: "Becsült havi díj", en: "Estimated monthly cost" },
       responseLabel:        { hu: "Válaszidő", en: "Response time" },
-      extrasLabel:          { hu: "Mit tartalmaz", en: "What's included" },
+      includesLabel:        { hu: "Mit tartalmaz", en: "What's included" },
       minimumOverageNote:   { hu: "Minden csomagnál havonta minimum 2 órát kell választanod. A vállalt órakereten felüli munkát egységesen 17 000 Ft/óra túllépési díjon számlázzuk (ez minden csomagnál ugyanaz).", en: "Every tier has a 2-hour monthly minimum. Any hours used beyond what you've committed to are billed at a flat 17,000 HUF/hour overage rate (the same rate, regardless of tier)." },
       cardBtn:              { hu: "Érdeklődj a csomagról", en: "Ask About This Tier" },
       cards: [
@@ -179,19 +179,29 @@ export const t = {
           name:       { hu: "Basic", en: "Basic" },
           rateDisplay:{ hu: "11 000 Ft/óra", en: "11,000 HUF/hour" },
           response:   { hu: "48 órán belül", en: "Within 48 hours" },
-          extras:     null,
+          includes: [
+            { hu: "Havi gyors helyszíni ellenőrzés", en: "A quick on-site check every month" },
+            { hu: "Rövid visszajelzés minden látogatás után", en: "A short note after each visit" },
+          ],
         },
         {
           name:       { hu: "Standard", en: "Standard" },
           rateDisplay:{ hu: "12 000 Ft/óra", en: "12,000 HUF/hour" },
           response:   { hu: "24 órán belül", en: "Within 24 hours" },
-          extras:     { hu: "Negyedévenként egy kiszállás a csomagban", en: "1 on-site visit included per quarter" },
+          includes: [
+            { hu: "Havi teljes körű helyszíni ellenőrzés, a te időbeosztásodhoz igazítva", en: "A full on-site check every month, scheduled around your availability" },
+            { hu: "Írásos állapotösszefoglaló minden látogatás után", en: "A written health summary after each visit" },
+          ],
         },
         {
           name:       { hu: "Premium", en: "Premium" },
           rateDisplay:{ hu: "14 000 Ft/óra", en: "14,000 HUF/hour" },
           response:   { hu: "Aznap, munkaidőben", en: "Same-day, during business hours" },
-          extras:     { hu: "Proaktív felügyelet és elsőbbségi időpontfoglalás", en: "Proactive monitoring and priority scheduling" },
+          includes: [
+            { hu: "Havi teljes körű helyszíni ellenőrzés azonnali hibaelhárítással és elsőbbségi időpontfoglalással", en: "A full on-site check every month, with fixes handled on the spot and priority scheduling" },
+            { hu: "Írásos állapotösszefoglaló minden látogatás után", en: "A written health summary after each visit" },
+            { hu: "Folyamatos távfelügyelet a látogatások között", en: "Continuous remote monitoring between visits" },
+          ],
         },
       ],
     },
